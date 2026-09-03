@@ -208,6 +208,145 @@ footer{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);font-si
 .mapcard img{width:100%;height:auto;display:block}
 .maptitle{font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--green);padding:10px 14px 8px;text-align:center}
 .mapcap{font-size:12px;color:var(--muted);padding:10px 14px 14px;text-align:center;line-height:1.5}
+/* ---- Simple Calculator ---- */
+.calcblk{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:14px 15px 15px}
+.calcblk h3{margin:0 0 10px;font-size:13.5px;color:var(--greend);text-transform:uppercase;letter-spacing:.5px}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:11px}
+.cgrid2{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.fld{display:flex;flex-direction:column;gap:4px;font-size:12.5px}
+.fld .fl{font-weight:600}
+.fld .fh{font-size:11px;color:var(--muted)}
+.calcblk input[type=text],.calcblk input[type=number],.calcblk input[type=date],
+.calcblk textarea,.calcblk select{
+  font:inherit;font-size:13px;padding:7px 9px;border:1px solid var(--line);border-radius:9px;
+  background:#fff;color:var(--ink);width:100%}
+.calcblk select{cursor:pointer;appearance:none;
+  background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);
+  background-position:calc(100% - 15px) 15px,calc(100% - 10px) 15px;background-size:5px 5px,5px 5px;
+  background-repeat:no-repeat;padding-right:28px}
+.calcblk textarea{resize:vertical}
+.calcblk input:focus,.calcblk textarea:focus,.calcblk select:focus{outline:2px solid var(--greensoft);border-color:var(--green)}
+.cbx{display:flex;gap:9px;align-items:flex-start;background:#fff;border:1px solid var(--line);
+  border-radius:11px;padding:9px 11px;font-size:12.5px;cursor:pointer}
+.cbx input{margin-top:2px;accent-color:var(--green);width:15px;height:15px;flex:0 0 auto}
+.calctbl input.qin{width:74px;padding:5px 6px;font-size:12.5px;text-align:right}
+.calctbl input.tin{width:100%;padding:5px 6px;font-size:12.5px}
+.calctbl td{vertical-align:middle}
+.tr-sum,.cu-sum{font-weight:700;white-space:nowrap}
+.calcnote{font-size:11.5px;color:var(--muted);margin:8px 2px 10px}
+
+/* ---- panel boleh-buka (Quick mode) ---- */
+.panel{background:#fff;border:1px solid var(--line);border-radius:12px;margin:0 0 9px;overflow:hidden}
+.panel>summary{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:11px 13px;cursor:pointer;
+  list-style:none;font-size:13px}
+.panel>summary::-webkit-details-marker{display:none}
+.panel>summary .tw{color:var(--green);font-size:10px;transition:transform .15s}
+.panel[open]>summary .tw{transform:rotate(90deg)}
+.panel>summary .pt{font-weight:700}
+.panel>summary .psum{margin-left:auto;font-size:11.5px;color:var(--muted);text-align:right}
+.panel[open]>summary{border-bottom:1px solid var(--line);background:var(--soft)}
+.pbody{padding:13px}
+.calcblk .panel{margin-bottom:0}
+
+/* ---- bar ringkasan itinerary ---- */
+.dbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  background:var(--greensoft);border:1px solid var(--line);border-radius:11px;
+  padding:8px 12px;font-size:12.5px;margin-bottom:10px}
+
+/* ---- kad hari ---- */
+.dayc{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;overflow:hidden}
+.dayc>summary{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:9px 11px;cursor:pointer;
+  list-style:none;font-size:12.5px}
+.dayc>summary::-webkit-details-marker{display:none}
+.dayc[open]>summary{border-bottom:1px solid var(--line);background:var(--soft)}
+.dayc.dragging{opacity:.45}
+.dayc.dropto{outline:2px dashed var(--green2);outline-offset:-2px}
+.dgrip{flex:0 0 auto;color:var(--muted);font-size:14px;cursor:grab;line-height:1;user-select:none}
+.dgrip:active{cursor:grabbing}
+.dayc>summary{user-select:none}
+.dnum{flex:0 0 auto;width:21px;height:21px;border-radius:6px;background:var(--green);color:#fff;
+  font-weight:800;font-size:11.5px;display:flex;align-items:center;justify-content:center}
+.ddate{flex:0 0 auto;color:var(--muted);font-size:11.5px;min-width:78px}
+.dname{flex:1 1 170px;font-weight:700}
+.dchips{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.dchip{font-size:10.5px;background:var(--soft);border:1px solid var(--line);border-radius:999px;
+  padding:2px 8px;color:var(--muted);white-space:nowrap}
+.dayc[open]>summary .dchip{background:#fff}
+.dchip.dcost{font-weight:700}
+.dchip.dcost.on{background:var(--greensoft);border-color:var(--green2);color:var(--greend)}
+.dacts{display:flex;gap:4px;flex:0 0 auto}
+.xbtn{font:inherit;font-size:13px;line-height:1;width:24px;height:24px;border-radius:7px;
+  border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer}
+.xbtn:hover{background:var(--greensoft);color:var(--greend);border-color:var(--green2)}
+.dbody{padding:11px}
+.aowrap{margin-top:11px;padding-top:10px;border-top:1px dashed var(--line);font-size:12.5px}
+.aowrap>.fl{display:block;font-weight:600;margin-bottom:6px}
+.aorow{display:flex;gap:6px;align-items:center;margin-bottom:6px;flex-wrap:wrap}
+.aorow select{flex:1 1 210px;width:auto}
+.aorow input.qin{width:78px}
+.aosum{font-weight:700;min-width:76px;text-align:right;font-size:12px;white-space:nowrap}
+
+.ctot{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 4px}
+.ctot>div{flex:1 1 190px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.ctl{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.ctv{display:block;font-size:19px;font-weight:800;color:var(--greend);margin-top:2px}
+.cbtns{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.cbtn{font:inherit;font-size:13px;font-weight:700;padding:10px 18px;border-radius:999px;border:none;
+  background:var(--green);color:#fff;cursor:pointer}
+.cbtn:hover{background:var(--green2)}
+.cbtn2{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.cbtn2:hover{background:var(--soft)}
+.cbtn3{background:#fff;color:var(--greend);border:1px solid var(--line);font-size:12px;padding:6px 13px}
+.cbtn3:hover{background:var(--greensoft)}
+@media(max-width:640px){
+  .calctbl input.qin{width:58px}
+  .ddate{display:none}
+  .aorow input.qin{width:64px}
+}
+
+/* ---- pemilih varian pakej (destinasi berbilang pakej) ---- */
+.pkgsel{margin-bottom:12px}
+.pkgsel .fl{display:block;font-weight:600;font-size:12.5px;margin-bottom:4px}
+.pkgsel select{font:inherit;font-size:13.5px;font-weight:600;padding:9px 11px;border:1px solid var(--line);
+  border-radius:10px;background:#fff;color:var(--ink);width:100%;cursor:pointer}
+.pkgsel select:focus{outline:2px solid var(--greensoft);border-color:var(--green)}
+.dayc .dchips .dchip.dreg{color:var(--ink);font-weight:700;letter-spacing:.3px}
+.dayc .dchips .dchip.dwarn{background:#fdecec;color:#b3261e;border-color:#f3c9c6;font-weight:700}
+.dayc .dchips .dchip.dcost.dded{background:#eef3fb;border-color:#c9d8ef;color:#1a4d8f}
+.dayc .dnum.dnumx{background:#eef3fb;color:#1a4d8f;box-shadow:inset 0 0 0 1.5px #9dbbe4}
+.calcblk .calcwarn,.block[data-topic="calc"]>.calcwarn{margin:10px 0 0;padding:9px 12px;border-radius:10px;
+  background:#fdecec;border:1px solid #f3c9c6;color:#b3261e;font-size:12.5px;line-height:1.45}
+.dname{flex:1 1 210px;min-width:0;display:flex;flex-direction:column;gap:2px;font-weight:400}
+.dnm{font-weight:700}
+.dprev{font-size:11.5px;color:var(--muted);line-height:1.35;overflow:hidden;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.dstops{margin-top:11px;padding-top:10px;border-top:1px dashed var(--line);font-size:12.5px}
+.dstops>.fl{display:block;font-weight:600;margin-bottom:6px}
+.dlist{margin:0;padding-left:17px}
+.dlist li{margin-bottom:3px}
+.calcblk .calcincl{margin:9px 0 0;padding:8px 11px;border-radius:9px;background:var(--soft);
+  border:1px solid var(--line);color:var(--ink);font-size:12px;line-height:1.45}
+.warnred{color:#b3261e}
+
+
+/* ---- breakdown harga per pax (bawah jadual ringkasan) ---- */
+.calcbrk{width:100%;border-collapse:collapse;margin:.35rem 0 .5rem}
+.calcbrk td{padding:.28rem .5rem;border-bottom:1px solid var(--line,#e5e7eb);font-size:.86rem}
+.calcbrk td.add{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.calcbrk td.add.dded{color:#b3261e}
+.calcbrk tr.brkt td{border-top:2px solid var(--line,#e5e7eb);border-bottom:none;
+  background:var(--soft,#f8fafc)}
+.brkh{margin:.6rem 0 .1rem;font-size:.9rem}
+.brkn{margin:.15rem 0 0;font-size:.78rem;color:var(--muted,#64748b);line-height:1.45}
+.calcbrk tr.brks td{border-top:1px solid var(--line);color:var(--muted)}
+.calcbrk tr.brks td.add{color:var(--ink)}
+
+/* ---- cip flag tambah/tolak pada baris hari ---- */
+.dchip.dadj{background:var(--soft,#f1f5f9);border:1px solid var(--line,#e2e8f0);
+  font-size:.72rem;font-weight:600}
+.dchip.dadj.dded{color:#b3261e;border-color:#f3c9c4}
+.dchip.dadj.dtrip{border-style:dashed;opacity:.9}
+
 </style>
 </head>
 <body>
@@ -280,7 +419,7 @@ footer{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);font-si
   "miniSearchPlaceholder": "Tanya Ali tentang pakej Perhentian…",
   "heroImage": "",
   "overviewTitle": "Pakej Private Tour Perhentian",
-  "statusText": "Last updated: 7 Ogos 2026",
+  "statusText": "Last updated: 3 September 2026",
   "footerHtml": "Rujukan dalaman TC ARBA Travel. Sumber utama: katalog PT PERHENTIAN BASIC (3D2N) 2026 V3 dan PT PERHENTIAN STANDARD (3D2N) 2026 V3. Angka yang tiada dalam katalog dilabel &quot;Sumber: rate card ARBA&quot;.<br>Tiada gambar trip lepas untuk Perhentian dalam folder produk, jadi KB ini tiada tab Gambar Trip Lepas &mdash; ini memang begitu, bukan data yang tertinggal.<br>Requirement muslim-friendly (halal, surau/masjid, solat) adalah baseline setiap pakej.",
   "marketing": {
    "anchors": [
@@ -759,7 +898,7 @@ footer{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);font-si
  "blocks": {
   "compare": "<h2>Perbezaan Pakej</h2><p class='ssub'>Empat tier resort, itinerari 3D2N yang sama - beza pada resort, harga dan surcaj.</p><table class='cmp'><colgroup><col class='c1'><col><col><col><col></colgroup><thead><tr><th class='blank'></th><th>MIMPI &middot; STANDARD &middot; KATALOG</th><th>OMBAK &middot; 3 BINTANG &middot; RATE CARD</th><th>SHARI-LA &middot; BASIC &middot; KATALOG</th><th>FLORA BAY &middot; BUDGET &middot; RATE CARD</th></tr></thead><tbody><tr><td class='feat'>Pulau</td><td class='val'>Kecil</td><td class='val'>Kecil</td><td class='val'>Kecil</td><td class='val'>Besar</td></tr><tr><td class='feat'>Jenis bilik</td><td class='val'>Standard Room</td><td class='val'>Twin - Family</td><td class='val'>Standard Room</td><td class='val'>Chalet</td></tr><tr><td class='feat'>Return Boat Transfer (SIC)</td><td class='val'><span class='tick'>&#10003;</span></td><td class='val'><span class='tick'>&#10003;</span></td><td class='val'><span class='tick'>&#10003;</span></td><td class='val'><span class='tick'>&#10003;</span></td></tr><tr><td class='feat'>Fullboard 2B / 2L / 2D (halal)</td><td class='val'><span class='tick'>&#10003;</span></td><td class='val'><span class='tick'>&#10003;</span></td><td class='val'><span class='tick'>&#10003;</span></td><td class='val'><span class='tick'>&#10003;</span></td></tr><tr><td class='feat'>5 Points Snorkelling + gear</td><td class='val'><span class='tick'>&#10003;</span></td><td class='val'><span class='tick'>&#10003;</span></td><td class='val'><span class='tick'>&#10003;</span></td><td class='val'><span class='tick'>&#10003;</span></td></tr><tr><td class='feat'>Ground &amp; Tipping</td><td class='val'><span class='tick'>&#10003;</span></td><td class='val'><span class='tick'>&#10003;</span></td><td class='val'><span class='tick'>&#10003;</span></td><td class='val'><span class='tick'>&#10003;</span></td></tr><tr><td class='feat'>Windmill Trekking + Longbeach Fireshow</td><td class='val'><span class='tick'>&#10003;</span></td><td class='val'><span class='tick'>&#10003;</span></td><td class='val'><span class='tick'>&#10003;</span></td><td class='val'><span class='tick'>&#10003;</span></td></tr><tr><td class='feat'>Marine Park Fee</td><td class='val'>Add-on</td><td class='val'>Add-on</td><td class='val'>Add-on</td><td class='val'>Add-on</td></tr><tr><td class='feat'>Airport &harr; Jetty transfer</td><td class='val'>RM65/pax</td><td class='val'>RM65/pax</td><td class='val'>RM65/pax</td><td class='val'>RM65/pax</td></tr><tr><td class='feat'>Honeymoon set (per couple)</td><td class='val'>RM600</td><td class='val'>RM380</td><td class='val'>RM280</td><td class='val'>RM297</td></tr><tr><td class='feat'>Scuba / Pulau Rawa / Private boat</td><td class='val'>Add-on</td><td class='val'>Add-on</td><td class='val'>Add-on</td><td class='val'>Add-on</td></tr><tr><td class='feat'>Single supplement</td><td class='val'>+RM600</td><td class='val'>+RM400</td><td class='val'>+RM500</td><td class='val'>+RM400</td></tr><tr><td class='feat'>Peak season (per pax/malam)</td><td class='val'>+RM150</td><td class='val'>+RM150</td><td class='val'>+RM50</td><td class='val'>+RM50</td></tr><tr><td class='feat'>Deposit</td><td class='val'>RM250/pax</td><td class='val'>RM250/pax</td><td class='val'>RM250/pax</td><td class='val'>RM250/pax</td></tr><tr><td class='feat'>Harga dewasa dari (2 pax)</td><td class='val'>RM1,597</td><td class='val'>RM1,177</td><td class='val'>RM1,097</td><td class='val'>RM797</td></tr><tr><td class='feat'>Harga dewasa dari (8-10 pax)</td><td class='val'>RM1,597</td><td class='val'>RM1,077</td><td class='val'>RM997</td><td class='val'>RM607</td></tr><tr><td class='feat'>Sesuai untuk</td><td class='val'>Honeymoon &amp; keluarga mahu premium</td><td class='val'>Group besar, nilai terbaik</td><td class='val'>Bajet terkawal di Long Beach</td><td class='val'>Paling jimat, suasana tenang</td></tr></tbody></table>",
   "pricing": "<h2>Harga &amp; Pakej</h2><p class='ssub'>Kadar per pax, 3D2N, 2 atau 3 orang sebilik (Default Standard Room). MYR, tiada margin ditambah. Shari-la = katalog BASIC V3 2026; Mimpi = katalog STANDARD V3 2026. Ombak &amp; Flora Bay: sumber rate card ARBA - tiada dalam katalog.</p><div class='custblk'><h3>Kadar Dewasa (12 tahun ke atas) - RM/pax</h3><table class='ctbl'><thead><tr><th>Bilangan pax</th><th>Mimpi (STANDARD) <span class='src'>katalog V3</span></th><th>Ombak <span class='src'>rate card</span></th><th>Shari-la (BASIC) <span class='src'>katalog V3</span></th><th>Flora Bay <span class='src'>rate card</span></th></tr></thead><tbody><tr><td class='it'>1 (solo)</td><td class='add'>2,197</td><td class='add'>1,510</td><td class='add'>1,457</td><td>on request</td></tr><tr><td class='it'>2 - 3</td><td class='add'>1,597</td><td class='add'>1,177</td><td class='add'>1,097</td><td class='add'>797</td></tr><tr><td class='it'>4 - 5</td><td class='add'>1,597</td><td class='add'>1,127</td><td class='add'>1,057</td><td class='add'>657</td></tr><tr><td class='it'>6 - 7</td><td class='add'>1,597</td><td class='add'>1,127</td><td class='add'>1,007</td><td class='add'>657</td></tr><tr><td class='it'>8 - 10</td><td class='add'>1,597</td><td class='add'>1,077</td><td class='add'>997</td><td class='add'>607</td></tr></tbody></table><p class='custnote'>Katalog Ombak (2 pax) RM1,177 dan Flora Bay RM797 ke bawah adalah kadar rate card ARBA. Mimpi rata RM1,597 untuk 2 hingga 10 pax.</p></div><div class='custblk'><h3>Kadar Kanak-kanak - Tier Katalog</h3><table class='ctbl'><thead><tr><th>Bilangan pax</th><th>Shari-la CWB<br>(6-11 thn)</th><th>Shari-la CNB<br>(2-5 thn)</th><th>Mimpi CWB<br>(6-11 thn)</th><th>Mimpi CNB<br>(2-5 thn)</th></tr></thead><tbody><tr><td class='it'>2 - 3</td><td class='add'>997</td><td class='add'>897</td><td class='add'>1,497</td><td class='add'>1,397</td></tr><tr><td class='it'>4 - 5</td><td class='add'>957</td><td class='add'>857</td><td class='add'>1,497</td><td class='add'>1,397</td></tr><tr><td class='it'>6 - 7</td><td class='add'>907</td><td class='add'>807</td><td class='add'>1,497</td><td class='add'>1,397</td></tr><tr><td class='it'>8 - 10</td><td class='add'>897</td><td class='add'>797</td><td class='add'>1,497</td><td class='add'>1,397</td></tr></tbody></table><p class='custnote'>Kadar 1 pax (solo) tiada kadar kanak-kanak dalam katalog. CWB = Child With Bed, CNB = Child No Bed.</p></div><div class='custblk'><h3>Kadar Kanak-kanak - Tier Rate Card</h3><table class='ctbl'><thead><tr><th>Resort</th><th>Child With Bed</th><th>Child No Bed</th><th>Infant</th></tr></thead><tbody><tr><td class='it'>Ombak <span class='src'>rate card</span></td><td class='add'>1,057</td><td class='add'>657</td><td>FOC</td></tr><tr><td class='it'>Flora Bay <span class='src'>rate card</span></td><td class='add'>597</td><td class='add'>357</td><td>FOC</td></tr></tbody></table></div><div class='custblk'><h3>Nota Harga Katalog</h3><table class='ctbl'><thead><tr><th>Item</th><th>Butiran</th></tr></thead><tbody><tr><td class='it'>Tempoh sah katalog</td><td>Valid until 15 Oktober 2026</td></tr><tr><td class='it'>Sah sebut harga</td><td>Semua harga sah 24 jam selepas quotation dihantar</td></tr><tr><td class='it'>Asas bilik</td><td>Harga untuk 2 atau 3 orang sebilik, Default Standard Room</td></tr><tr><td class='it'>Deposit</td><td class='add'>RM250 per pax</td></tr><tr><td class='it'>Full payment</td><td>30 hari sebelum bertolak</td></tr><tr><td class='it'>Late booking</td><td class='add'>RM50/booking</td></tr><tr><td class='it'>Peak season</td><td>Harga tidak terpakai semasa peak season - rujuk tab Surcharge</td></tr></tbody></table></div>",
-  "custom": "<h2>Simple Customisation (Add-ons)</h2><p class='ssub'>Add-on rasmi katalog V3 2026 di atas; item rate card ARBA di bawah.</p><div class='custblk'><h3>Add On Activity - Katalog V3 2026</h3><table class='ctbl'><thead><tr><th>Item</th><th>Harga</th><th>Nota</th></tr></thead><tbody><tr><td class='it'>Return Airport Transfer (sharing)</td><td class='add'>RM65/pax</td><td>Kota Bharu Airport &harr; Jetty Kuala Besut</td></tr><tr><td class='it'>Return Private Boat Transfer</td><td class='add'>RM957/boat</td><td>Jetty Kuala Besut &harr; resort, max 12 pax sebot</td></tr><tr><td class='it'>Private Boat Island Hopping (5 point)</td><td class='add'>RM957/boat</td><td>Shark, Fish, Nemo, Turtle Point &amp; Teluk Keke; max 12 pax</td></tr><tr><td class='it'>Snorkelling Pulau Rawa</td><td class='add'>RM120/pax</td><td>sharing boat, minimum 4 pax</td></tr><tr><td class='it'>Scuba Diving (DSD)</td><td class='add'>RM300/pax</td><td>termasuk scuba gear &amp; dive master, minimum 1 pax</td></tr><tr><td class='it'>Scuba Diving (Fun Dive)</td><td class='add'>RM120/pax</td><td>termasuk scuba gear &amp; dive master, minimum 1 pax</td></tr><tr><td class='it'>Honeymoon Package - Mimpi</td><td class='add'>RM600/couple</td><td>deko bilik honeymoon + candle light dinner</td></tr><tr><td class='it'>Honeymoon Package - Ombak</td><td class='add'>RM380/couple</td><td>deko bilik honeymoon + candle light dinner</td></tr><tr><td class='it'>Honeymoon Package - Shari-la</td><td class='add'>RM280/couple</td><td>deko bilik honeymoon + candle light dinner</td></tr></tbody></table></div><div class='custblk'><h3>Add On Lain - Sumber: rate card ARBA (tiada dalam katalog)</h3><table class='ctbl'><thead><tr><th>Item</th><th>Harga</th><th>Per</th></tr></thead><tbody><tr><td class='it'>Honeymoon Package - Flora Bay</td><td class='add'>RM297</td><td>couple</td></tr><tr><td class='it'>Kayak</td><td class='add'>RM15</td><td>jam/couple</td></tr><tr><td class='it'>Picnic Trip</td><td class='add'>RM45</td><td>pax/trip</td></tr><tr><td class='it'>Extra Breakfast</td><td class='add'>RM25</td><td>pax</td></tr><tr><td class='it'>Extra Lunch / Dinner</td><td class='add'>RM35</td><td>pax</td></tr><tr><td class='it'>BBQ Dinner</td><td class='add'>RM37</td><td>pax</td></tr><tr><td class='it'>Takaful TripCare 360 (individu 1-5 hari)</td><td class='add'>RM50</td><td>pax</td></tr><tr><td class='it'>Luggage Tracker (Blue Ribbon)</td><td class='add'>RM20 - RM70</td><td>unit</td></tr></tbody></table></div>",
+  "custom": "<h2>Simple Customisation (Add-ons)</h2><p class='ssub'>Add-on rasmi katalog V3 2026 di atas; item rate card ARBA di bawah.</p><div class='custblk'><h3>Add On Activity - Katalog V3 2026</h3><table class='ctbl'><thead><tr><th>Item</th><th>Harga</th><th>Nota</th></tr></thead><tbody><tr><td class='it'>Return Airport Transfer (sharing)</td><td class='add'>RM65/pax</td><td>Kota Bharu Airport &harr; Jetty Kuala Besut</td></tr><tr><td class='it'>Return Private Boat Transfer</td><td class='add'>RM957/boat</td><td>Jetty Kuala Besut &harr; resort, max 12 pax sebot</td></tr><tr><td class='it'>Private Boat Island Hopping (5 point)</td><td class='add'>RM957/boat</td><td>Shark, Fish, Nemo, Turtle Point &amp; Teluk Keke; max 12 pax</td></tr><tr><td class='it'>Snorkelling Pulau Rawa</td><td class='add'>RM120/pax</td><td>sharing boat, minimum 4 pax</td></tr><tr><td class='it'>Scuba Diving (DSD)</td><td class='add'>RM300/pax</td><td>termasuk scuba gear &amp; dive master, minimum 1 pax</td></tr><tr><td class='it'>Scuba Diving (Fun Dive)</td><td class='add'>RM120/pax</td><td>termasuk scuba gear &amp; dive master, minimum 1 pax</td></tr><tr><td class='it'>Honeymoon Package - Mimpi</td><td class='add'>RM600/couple</td><td>deko bilik honeymoon + candle light dinner</td></tr><tr><td class='it'>Honeymoon Package - Ombak</td><td class='add'>RM380/couple</td><td>deko bilik honeymoon + candle light dinner</td></tr><tr><td class='it'>Honeymoon Package - Shari-la</td><td class='add'>RM280/couple</td><td>deko bilik honeymoon + candle light dinner</td></tr></tbody></table></div><div class='custblk'><h3>Add On Lain - Sumber: rate card ARBA (tiada dalam katalog)</h3><table class='ctbl'><thead><tr><th>Item</th><th>Harga</th><th>Per</th></tr></thead><tbody><tr><td class='it'>Honeymoon Package - Flora Bay</td><td class='add'>RM297</td><td>couple</td></tr><tr><td class='it'>Kayak</td><td class='add'>RM15</td><td>jam/couple</td></tr><tr><td class='it'>Picnic Trip</td><td class='add'>RM45</td><td>pax/trip</td></tr><tr><td class='it'>Extra Breakfast</td><td class='add'>RM25</td><td>pax</td></tr><tr><td class='it'>Extra Lunch / Dinner</td><td class='add'>RM35</td><td>pax</td></tr><tr><td class='it'>BBQ Dinner</td><td class='add'>RM37</td><td>pax</td></tr><tr><td class='it'>Takaful TripCare 360 (individu 1-5 hari)</td><td class='add'>RM50</td><td>pax</td></tr><tr><td class='it'>Luggage Tracker (Blue Ribbon)</td><td class='add'>RM20 - RM70</td><td>unit</td></tr></tbody></table></div>","calc":"<h2>Simple Calculator</h2><p class='ssub'>Isi pax dan tarikh berlepas / balik &mdash; panjang trip, peak season dan semua surcharge dikira sendiri dan terus masuk dalam harga per pax. Buka panel itinerary hanya bila nak ubah hari.</p><div class='custblk calcblk'><h3>Detail customer</h3><div class='pkgsel'><label><span class='fl'>Pakej</span><select id='c_pkg'><option value='0'>PT Perhentian BASIC &middot; Shari-la Resort (3D2N) &mdash; katalog V3</option><option value='1'>PT Perhentian STANDARD &middot; Mimpi Resort (3D2N) &mdash; katalog V3</option><option value='2'>PT Perhentian &middot; Ombak Resort (3D2N) &mdash; rate card ARBA</option><option value='3'>PT Perhentian &middot; Flora Bay Resort (3D2N) &mdash; rate card ARBA</option></select></label></div><div class='cgrid'><label class='fld'><span class='fl'>Nama customer</span><input id='c_name' type='text' placeholder='Nama penuh customer'></label><label class='fld'><span class='fl'>Departure date</span><input id='c_dep' type='date'><span class='fh'>Hari 1 trip</span></label><label class='fld'><span class='fl'>Return date</span><input id='c_ret' type='date'><span class='fh'>Hari terakhir &mdash; tentukan panjang trip</span></label><label class='fld'><span class='fl'>Adult (12 tahun ke atas)</span><input id='c_adult' type='number' min='0' value='2'></label><label class='fld'><span class='fl'>Kanak-kanak dengan katil (6&ndash;11 thn)</span><input id='c_cwb' type='number' min='0' value='0'></label><label class='fld'><span class='fl'>Kanak-kanak tanpa katil (2&ndash;5 thn)</span><input id='c_cnb' type='number' min='0' value='0'></label><label class='fld'><span class='fl'>Infant (bawah 2)</span><input id='c_inf' type='number' min='0' value='0'><span class='fh'>Katalog V3 tiada kategori infant; rate card ARBA tulis infant <b>FOC</b> untuk Ombak &amp; Flora Bay. Sahkan polisi resort.</span></label><label class='fld'><span class='fl'>Bilik single</span><input id='c_single' type='number' min='0' value='0'><span class='fh'>Katalog: Mimpi +RM600 &middot; Shari-la +RM500 &middot; Ombak / Flora Bay +RM400 (rate card). Kadar rata untuk pakej 2 malam &mdash; tidak berskala bila malam ditambah.</span></label></div><p class='calcnote' id='c_tier'></p></div><details class='panel' id='p_itin'><summary><span class='tw'>&#9654;</span><span class='pt'>Ubah itinerary</span><span class='psum' id='p_itin_s'></span></summary><div class='pbody'><div class='dbar'><span id='c_bar'></span><button type='button' id='c_expand' class='cbtn cbtn3'>Buka semua</button></div><div id='c_days'></div><div class='cbtns'><button type='button' id='c_addday' class='cbtn'>+ Tambah Hari</button><button type='button' id='c_reload' class='cbtn cbtn2'>Muat semula itinerary asal</button></div><p class='calcnote'>Seret baris hari (&#10303;) untuk susun semula &mdash; nombor hari dan tarikh berubah sendiri. Tambah atau buang hari akan laraskan <b>return date</b>. Pilihan bertanda <i>Termasuk pakej</i> tidak menambah kos.</p></div></details><div class='custblk calcblk'><h3>Ringkasan quotation</h3><table class='ctbl calctbl'><thead><tr><th>Item</th><th>Bil.</th><th>Harga seunit (RM)</th><th>Jumlah (RM)</th></tr></thead><tbody id='c_lines'></tbody></table><div class='ctot'><div><span class='ctl'>Grand Total</span><span class='ctv' id='c_grand'>RM 0</span></div><div><span class='ctl'>Per pax (final, semua kos)</span><span class='ctv' id='c_perpax'>RM 0</span></div><div><span class='ctl'>Deposit</span><span class='ctv' id='c_dep_amt'>RM 0</span></div></div><div class='cbtns'><button type='button' id='c_pdf' class='cbtn'>Jana Quotation PDF</button><button type='button' id='c_reset' class='cbtn cbtn2'>Reset semua</button></div><p class='calcnote'>Quotation dibuka dalam <b>tab baharu</b> mengikut format rasmi ARBA &mdash; dari situ tekan <b>Muat turun PDF</b> untuk simpan fail.</p></div>",
   "surcharge": "<h2>Surcharge &amp; Supplement</h2><p class='ssub'>Nilai katalog V3 2026 adalah rujukan rasmi. Item yang tiada dalam katalog dilabel rate card ARBA.</p><div class='custblk'><h3>Peak Season &amp; Travel Date</h3><table class='ctbl'><thead><tr><th>Tier</th><th>Tarikh</th><th>Surcaj</th></tr></thead><tbody><tr><td class='it'>Shari-la (BASIC) <span class='src'>katalog V3</span></td><td>21 Mac 2025 - 30 September 2026</td><td class='add'>+RM50/pax/malam</td></tr><tr><td class='it'>Shari-la (BASIC) 2027 <span class='src'>katalog V3</span></td><td>15 Februari 2027 - 31 Mac 2027</td><td class='add'>+RM50/pax/malam</td></tr><tr><td class='it'>Mimpi (STANDARD) <span class='src'>katalog V3</span></td><td>26 Mei - 1 Jun 2026 &middot; 1 Julai - 31 Ogos 2026</td><td class='add'>+RM150/pax/malam</td></tr><tr><td class='it'>Mimpi (STANDARD) 2027 <span class='src'>katalog V3</span></td><td>15 Februari 2027 - 31 Mac 2027</td><td class='add'>+RM150/pax/malam</td></tr><tr><td class='it'>Ombak <span class='src'>rate card</span></td><td>Ikut tarikh peak rate card 2026</td><td class='add'>+RM150/pax/malam</td></tr><tr><td class='it'>Flora Bay <span class='src'>rate card</span></td><td>Ikut tarikh peak rate card 2026</td><td class='add'>+RM50/pax/malam</td></tr></tbody></table></div><div class='custblk'><h3>Supplement &amp; Caj Lain</h3><table class='ctbl'><thead><tr><th>Item</th><th>Caj</th><th>Nota</th></tr></thead><tbody><tr><td class='it'>Single Supplement - Mimpi (STANDARD)</td><td class='add'>+RM600/pax</td><td><span class='src'>katalog V3</span></td></tr><tr><td class='it'>Single Supplement - Shari-la (BASIC)</td><td class='add'>+RM500/pax</td><td><span class='src'>katalog V3</span></td></tr><tr><td class='it'>Single Supplement - Ombak / Flora Bay</td><td class='add'>+RM400/pax</td><td><span class='src'>rate card</span></td></tr><tr><td class='it'>Late Booking</td><td class='add'>+RM50/booking</td><td>tempahan kurang 45 hari sebelum bertolak <span class='src'>katalog V3</span></td></tr><tr><td class='it'>Marine Park Entrance Fee</td><td class='add'>RM5 dewasa / RM2 kanak</td><td>wajib, bayar sendiri di jetty <span class='src'>katalog V3</span></td></tr><tr><td class='it'>Passport bukan warganegara Malaysia</td><td class='add'>by request</td><td>surcaj dikira semasa quotation <span class='src'>katalog V3</span></td></tr><tr><td class='it'>Tambah 1 malam (4D3N)</td><td class='add'>Ombak +RM475/dewasa &middot; Mimpi +RM550 &middot; CWB +RM375</td><td><span class='src'>rate card</span></td></tr><tr><td class='it'>Kurang 1 malam (2D1N)</td><td class='ded'>Ombak -RM400/dewasa &middot; CWB -RM300</td><td><span class='src'>rate card</span></td></tr><tr><td class='it'>Halfboard (breakfast sahaja)</td><td class='ded'>-RM150/dewasa &middot; -RM100/kanak</td><td><span class='src'>rate card</span></td></tr></tbody></table></div>",
   "transport": "<h2>Transportation &amp; Guide</h2><p class='ssub'>Destinasi domestik - pengangkutan darat ke jetty dan boat transfer ke pulau. Flight tidak termasuk.</p><div class='custblk'><h3>Boat &amp; Transfer</h3><table class='ctbl'><thead><tr><th>Item</th><th>Butiran</th></tr></thead><tbody><tr><td class='it'>Jetty Kuala Besut</td><td>Beroperasi lebih kurang 8 pagi hingga 5 petang; boat 30 - 45 minit ke pulau</td></tr><tr><td class='it'>Shared Boat Transfer</td><td>Boat transfer berkongsi dengan pelancong lain - termasuk dalam pakej <span class='src'>katalog V3</span></td></tr><tr><td class='it'>SIC Tour</td><td>Boat dan aktiviti berkongsi dengan pelancong lain <span class='src'>katalog V3</span></td></tr><tr><td class='it'>Waktu boat</td><td>Tertakluk kepada cuaca dan keadaan pasang surut <span class='src'>katalog V3</span></td></tr><tr><td class='it'>Return Airport Transfer</td><td class='add'>RM65/pax</td></tr><tr><td class='it'>Return Private Boat Transfer</td><td class='add'>RM957/boat (max 12 pax)</td></tr><tr><td class='it'>Guide</td><td>Tiada tour leader ARBA onsite; boatman dan staf resort menguruskan group. Tour leader upon request.</td></tr></tbody></table></div>",
   "stay": "<h2>Accommodation</h2><p class='ssub'>Empat tier resort. Shari-la dan Mimpi adalah hotel rasmi katalog V3 2026; Ombak dan Flora Bay dari rate card ARBA.</p><div class='custblk'><h3>Susunan Bilik</h3><table class='ctbl'><thead><tr><th>Item</th><th>Butiran</th></tr></thead><tbody><tr><td class='it'>Asas harga</td><td>2 atau 3 orang sebilik <span class='src'>katalog V3</span></td></tr><tr><td class='it'>Jenis bilik</td><td>Default Standard Room <span class='src'>katalog V3</span></td></tr><tr><td class='it'>Triple sharing</td><td>3 katil single disediakan ikut availability; extra bed ditambah jika tiada katil triple <span class='src'>katalog V3</span></td></tr><tr><td class='it'>Single supplement</td><td class='add'>Mimpi +RM600 &middot; Shari-la +RM500 &middot; Ombak / Flora Bay +RM400</td></tr><tr><td class='it'>Penginapan akhir</td><td>Itinerari dan susunan penginapan akhir dikongsi 14 hari sebelum trip <span class='src'>katalog V3</span></td></tr><tr><td class='it'>Solat</td><td>Semua resort ada ruang solat; Masjid Ar-Rahman di Perhentian Kecil dan Surau Al-Hijrah di Perhentian Besar</td></tr></tbody></table></div>",
@@ -876,6 +1015,7 @@ function parse(md){const lines=unescapeMd(md).split(/\r?\n/);const secs=[];let c
 /* topics: fixed order. blocks (pricing/custom/surcharge/transport/stay) come from KB.blocks */
 const TOPICS=[
  {id:"compare",t:"Perbezaan Pakej"},{id:"itin",t:"Itinerary & Aktiviti"},{id:"map",t:"Travel Map"},{id:"pricing",t:"Harga & Pakej"},{id:"custom",t:"Simple Customisation"},
+ {id:"calc",t:"Simple Calculator"},
  {id:"surcharge",t:"Surcharge"},{id:"transport",t:"Transportation & Guide"},{id:"stay",t:"Accommodation"},
  {id:"food",t:"Halal & Makanan"},{id:"prayer",t:"Solat"},{id:"flight",t:"Flight & Airport"},
  {id:"weather",t:"Cuaca & Musim"},{id:"tips",t:"Shopping & Tips"},{id:"visa",t:"Visa & Passport"},
@@ -991,6 +1131,1444 @@ $("#q").addEventListener("input",()=>sync($("#q"),$("#q2")));
 $("#q2").addEventListener("input",()=>sync($("#q2"),$("#q")));
 $("#goBtn").addEventListener("click",()=>{applyFilter();});
 build(KB.snapshot);
+/* ---- Simple Calculator: config destinasi ---- */
+var ARBA_LOGO="data:image/png;base64,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";
+var CALC_CFG={"dest":"Perhentian","currency":"RM","deposit":250,"defaultAdult":2,"tabAfter":"custom","blockBefore":"surcharge","childLabels":{"cwb":"Kanak-kanak dengan katil (6&ndash;11 thn)","cnb":"Kanak-kanak tanpa katil (2&ndash;5 thn)"},"infantNote":"Katalog V3 tiada kategori infant; rate card ARBA tulis infant <b>FOC</b> untuk Ombak &amp; Flora Bay. Sahkan polisi resort.","singleNote":"Katalog: Mimpi +RM600 &middot; Shari-la +RM500 &middot; Ombak / Flora Bay +RM400 (rate card). Kadar rata untuk pakej 2 malam &mdash; tidak berskala bila malam ditambah.","autoAddonQty":true,"extDefaults":{"acc":"extra"},"meals":{"lunch":0,"dinner":0},"mealDelta":{"add":35,"drop":35},"lateBooking":{"lt":45,"amount":50},"library":[{"v":"ext","g":"Hari tambahan","region":"[Perhentian]","t":"Hari tambahan di pulau - free & easy","acc":"incl","meal":"bld","trp":"none","act":["Free & easy di resort","Aktiviti pantai / snorkeling sendiri","Breakfast, lunch & dinner di resort"],"en":"EXTRA DAY AT PERHENTIAN - FREE & EASY","eact":["Free & easy at resort","Beach activities at leisure","Breakfast, lunch & dinner at resort"]},{"v":"libact","g":"Hari tambahan","region":"[Perhentian]","t":"Hari tambahan - aktiviti optional (beli sebagai add-on)","acc":"incl","meal":"bld","trp":"none","act":["Free & easy / aktiviti optional ikut pilihan customer","Pilih add-on: Pulau Rawa, scuba diving atau private boat island hopping","Breakfast, lunch & dinner di resort"],"en":"EXTRA DAY AT PERHENTIAN - OPTIONAL ACTIVITIES","eact":["Free & easy at leisure","Optional activities as selected","Breakfast, lunch & dinner at resort"]},{"v":"kbin","g":"Transfer lapangan terbang","t":"Ketibaan Kota Bharu - transfer ke Jetty Kuala Besut","acc":"incl","meal":"none","trp":"kbtrf","act":["Tiba Lapangan Terbang Sultan Ismail Petra, Kota Bharu (KBR)","Transfer sharing ke Jetty Kuala Besut (~1 jam 30 minit)","Bermalam di Kuala Besut / Kota Bharu - penginapan belum termasuk"],"en":"KOTA BHARU ARRIVAL - KUALA BESUT JETTY","eact":["Arrive Sultan Ismail Petra Airport, Kota Bharu (KBR)","Transfer on sharing basis to Kuala Besut Jetty (approx. 1 hour 30 minutes)"]},{"v":"kbout","g":"Transfer lapangan terbang","t":"Jetty Kuala Besut - transfer ke Kota Bharu, berlepas","acc":"none","meal":"none","trp":"kbtrf","act":["Transfer sharing dari Jetty Kuala Besut ke Lapangan Terbang Kota Bharu (KBR)","Berlepas"],"en":"KUALA BESUT JETTY - KOTA BHARU DEPARTURE","eact":["Transfer on sharing basis from Kuala Besut Jetty to Kota Bharu Airport (KBR)","Departure"]}],"accOptions":[{"v":"incl","t":"Resort (malam dalam pakej)","cost":"incl"},{"v":"extra","t":"Malam tambahan di resort (fullboard)","cost":"night","nightRate":"addnight","incl":"Additional night at resort on fullboard basis ({days})"},{"v":"none","t":"Tiada malam (checkout / balik ke jetty)","cost":"zero"}],"mealOptions":[{"v":"none","t":"Tiada makan","b":0,"l":0,"d":0,"lbl":"-"},{"v":"b","t":"Breakfast (dalam pakej)","b":1,"l":0,"d":0,"lbl":"Breakfast"},{"v":"ld","t":"Lunch &amp; Dinner (hari ketibaan)","b":0,"l":1,"d":1,"lbl":"Lunch, Dinner"},{"v":"bl","t":"Breakfast &amp; Lunch","b":1,"l":1,"d":0,"lbl":"Breakfast, Lunch"},{"v":"bd","t":"Breakfast &amp; Dinner","b":1,"l":0,"d":1,"lbl":"Breakfast, Dinner"},{"v":"bld","t":"Breakfast, Lunch &amp; Dinner (fullboard)","b":1,"l":1,"d":1,"lbl":"Breakfast, Lunch, Dinner"},{"v":"l","t":"Lunch sahaja","b":0,"l":1,"d":0,"lbl":"Lunch"},{"v":"d","t":"Dinner sahaja","b":0,"l":0,"d":1,"lbl":"Dinner"}],"trpOptions":[{"v":"boatin","t":"Shared boat transfer &mdash; Jetty Kuala Besut &rarr; Perhentian (dalam pakej)","cost":"incl","lbl":"Shared Boat Transfer (Kuala Besut Jetty - Perhentian Island)","incl":"Return Shared Boat Transfer (SIC), Kuala Besut Jetty to Perhentian Island ({days})"},{"v":"boatsnk","t":"Boat 5-points snorkeling trip (SIC, dalam pakej)","cost":"incl","lbl":"Boat for 5-Points Snorkelling Trip (SIC)","incl":"5 Points Snorkelling Trip including snorkelling gear ({days})"},{"v":"boatout","t":"Shared boat transfer &mdash; Perhentian &rarr; Jetty Kuala Besut (dalam pakej)","cost":"incl","lbl":"Shared Boat Transfer (Perhentian Island - Kuala Besut Jetty)"},{"v":"kbtrf","t":"Airport transfer Kota Bharu &harr; Jetty Kuala Besut (sharing, sehala)","cost":"zero","perPax":65,"lbl":"Airport Transfer (Kota Bharu - Kuala Besut Jetty)","line":"Airport Transfer on sharing basis (one way)","incl":"Airport Transfer on sharing basis, Kota Bharu Airport to Kuala Besut Jetty ({days})"},{"v":"none","t":"Tiada boat / free &amp; easy di pulau","cost":"zero","lbl":"-"}],"paxNotes":[{"from":1,"to":1,"text":"Solo: harga tier 1 pax <b>sudah</b> berasaskan bilik single occupancy &mdash; <b>jangan tambah single supplement lagi</b>. Flora Bay tiada harga tersiar untuk 1 pax (<i>on request</i>)."},{"from":11,"to":99999,"text":"11 pax ke atas: tier katalog berhenti pada 10 pax, jadi kalkulator guna tier 8&ndash;10. <b>Quote manual</b> dan sahkan dengan operator. Private boat maksimum 12 pax sebot."},{"from":1,"to":99999,"text":"<b>Kadar tidak tersiar</b> (quote manual, sahkan dengan operator): tarikh peak Ombak &amp; Flora Bay (amaun tersiar +RM150 dan +RM50 per pax per malam, tarikh tidak) &middot; tambah-malam BASIC &amp; Flora Bay &middot; kurang-malam BASIC, STANDARD &amp; Flora Bay."},{"from":1,"to":99999,"text":"Semak tarikh bertolak bukan dalam musim monsun (<b>15 Okt &ndash; 15 Feb</b>, pulau tutup). Marine Park Fee (katalog RM5/RM2 &middot; RAW DATA PHT 2026 RM12/pax &mdash; sahkan) dan flight domestik tidak termasuk."}],"addons":[["Airport Transfer Kota Bharu - Jetty Kuala Besut (sharing, sehala)",65,65,"pax"],["Airport Transfer Kota Bharu - Jetty Kuala Besut (sharing, return)",130,130,"pax"],["Private Boat Transfer return - Jetty Kuala Besut ke resort (max 12 pax sebot)",957,0,"unit"],["Private Boat Island Hopping 5 snorkelling point (max 12 pax sebot)",957,0,"unit"],["Snorkelling Pulau Rawa (sharing boat, minimum 4 pax)",120,120,"pax"],["Scuba Diving DSD - termasuk gear & dive master (minimum 1 pax)",300,300,"pax"],["Scuba Diving Fun Dive - termasuk gear & dive master (minimum 1 pax)",120,120,"pax"],["Honeymoon Package Mimpi - deko bilik + candle light dinner",600,0,"unit"],["Honeymoon Package Ombak - deko bilik + candle light dinner",380,0,"unit"],["Honeymoon Package Shari-la - deko bilik + candle light dinner",280,0,"unit"],["Honeymoon Package Flora Bay - deko bilik + candle light dinner",297,0,"unit"],["Picnic Trip",45,45,"pax"],["Extra Breakfast",25,25,"pax"],["Extra Lunch / Dinner",35,35,"pax"],["BBQ Dinner",37,37,"pax"],["Kayak - per jam per couple",15,0,"unit"],["Takaful TripCare 360 individu 1-5 hari (Area 1 domestik)",50,50,"pax"],["Luggage Tracker Blue Ribbon Silver",20,0,"unit"],["Luggage Tracker Blue Ribbon Gold",40,0,"unit"],["Luggage Tracker Blue Ribbon Platinum",55,0,"unit"],["Luggage Tracker Blue Ribbon Diamond",70,0,"unit"]],"validity":"<b>Validity of Quotation:</b> All prices are valid for 24 hours after quotation submission and are subject to resort and room availability as no space has been secured. Prices are quoted for 2 to 3 persons per room on a Default Standard Room basis. A deposit of RM 250 per person is required upon confirmation, with full payment due 30 days prior to departure. A late booking surcharge of RM 50 per booking applies to bookings made less than 45 days before the departure date. Boat timings are subject to weather and sea tide conditions; SIC tour and shared boat transfer are shared with other travellers. Marine Park Entrance Fees (Adult RM 5 / Child RM 2) are payable directly by guests at Kuala Besut Jetty. Perhentian Island is closed during the monsoon season from 15 October to 15 February and no trips operate on those dates. Triple sharing rooms with 3 single beds are provided subject to availability; an extra bed is added if no triple bed is available during the travel period. Itinerary, price and boat schedule are subject to change (weather, sea conditions, safety). Final itinerary and accommodation arrangements are confirmed 14 days before the trip. Any complimentary activity is non-exchangeable for other activities, vouchers or cash. Package is valid until 15 October 2026.","variants":[{"id":"basic","name":"PT Perhentian BASIC &middot; Shari-la Resort (3D2N) &mdash; katalog V3","pkgLabel":"Private Tour Perhentian BASIC - Shari-la Resort","hotelLabel":"Shari-la Perhentian Resort (2.5-Star)","days":3,"nights":2,"single":500,"labelCwb":"Child With Bed (6-11 years)","labelCnb":"Child No Bed (2-5 years)","tiers":[{"from":1,"to":1,"a":1457,"c":0,"n":0},{"from":2,"to":3,"a":1097,"c":997,"n":897},{"from":4,"to":5,"a":1057,"c":957,"n":857},{"from":6,"to":7,"a":1007,"c":907,"n":807},{"from":8,"to":10,"a":997,"c":897,"n":797}],"peak":{"mode":"perNight","value":50,"windows":[["2025-03-21","2026-09-30"],["2027-02-15","2027-03-31"]]},"ext":{"night":{"normal":0,"peak":0},"day":{"normal":0,"peak":0},"marginPerPax":0,"paxPerVehicle":12,"rates":{"addnight":{"_default":[{"from":1,"to":99,"normal":0,"peak":0}]},"nightShort":{"_default":[{"from":1,"to":99,"normal":0,"peak":0}]}}},"itin":[{"v":"d1","region":"[Perhentian]","t":"Jetty Kuala Besut - Perhentian Kecil (ketibaan)","en":"KUALA BESUT JETTY - PERHENTIAN KECIL","acc":"incl","meal":"ld","trp":"boatin","act":["Shared boat transfer dari Jetty Kuala Besut (~30-45 minit)","Check-in Shari-la Perhentian Resort (~3pm)","Free & easy + aktiviti pantai","Windmill Hill trekking","Longbeach Fireshow (malam)","Lunch & dinner di resort"],"eact":["Shared boat transfer from Kuala Besut Jetty (approx. 30-45 minutes)","Check-in at Shari-la Perhentian Resort (approx. 3pm)","Free & easy, beach activities","Windmill Hill trekking","Longbeach Fireshow (evening)","Lunch & dinner at resort"]},{"v":"d2","region":"[Perhentian]","t":"Perhentian 5-Points Snorkeling Trip (SIC)","en":"PERHENTIAN 5-POINTS SNORKELLING TRIP (SIC TOUR)","acc":"incl","meal":"bld","trp":"boatsnk","act":["Breakfast di resort","Boat snorkeling trip 5 points","Fish Point","Turtle Point (penyu)","Shark Point (jerung karang blacktip)","Kg Nelayan (lunch break)","Teluk Keke Beach","Nemo Point","Balik resort, free & easy","Dinner di resort"],"eact":["Breakfast at resort","5 Points Snorkelling Trip by boat","Fish Point","Turtle Point","Shark Point (blacktip reef shark)","Kg Nelayan (lunch break)","Teluk Keke Beach","Nemo Point","Return to resort, free & easy","Dinner at resort"]},{"v":"d3","region":"[Perhentian]","t":"Perhentian Kecil - Jetty Kuala Besut (berlepas)","en":"PERHENTIAN KECIL - KUALA BESUT JETTY","acc":"none","meal":"b","trp":"boatout","act":["Breakfast di resort","Free & easy / leisure","Check-out Shari-la Perhentian Resort","Shared boat transfer balik ke Jetty Kuala Besut"],"eact":["Breakfast at resort","Free & easy at leisure","Check-out from Shari-la Perhentian Resort","Shared boat transfer back to Kuala Besut Jetty"]}],"inclusions":["{auto}","{nights} nights accommodation at Shari-la Perhentian Resort, Perhentian Kecil (Default Standard Room, 2-3 pax sharing)","All meals as per itinerary - halal local food","Ground handling & tipping"],"exclusions":["Marine Park Entrance Fee (Adult RM5 / Child RM2) - paid directly at Kuala Besut Jetty","Surcharge for Non-Malaysian passport holders (quoted separately)","Domestic flights to Kota Bharu (KBR) or Kuala Terengganu (TGG)","Airport Transfer, Kota Bharu Airport to Kuala Besut Jetty (available as an add-on)","Optional activities (scuba diving, Pulau Rawa snorkelling, private boat charter)","Travel insurance / takaful","Personal expenses and additional meals"]},{"id":"standard","name":"PT Perhentian STANDARD &middot; Mimpi Resort (3D2N) &mdash; katalog V3","pkgLabel":"Private Tour Perhentian STANDARD - Mimpi Resort","hotelLabel":"Mimpi Perhentian Resort (4-Star)","days":3,"nights":2,"single":600,"labelCwb":"Child With Bed (6-11 years)","labelCnb":"Child No Bed (2-5 years)","tiers":[{"from":1,"to":1,"a":2197,"c":0,"n":0},{"from":2,"to":10,"a":1597,"c":1497,"n":1397}],"peak":{"mode":"perNight","value":150,"windows":[["2026-05-26","2026-06-01"],["2026-07-01","2026-08-31"],["2027-02-15","2027-03-31"]]},"ext":{"night":{"normal":0,"peak":0},"day":{"normal":0,"peak":0},"marginPerPax":0,"paxPerVehicle":12,"rates":{"addnight":{"_default":[{"from":1,"to":99,"normal":550,"peak":550}]},"nightShort":{"_default":[{"from":1,"to":99,"normal":0,"peak":0}]}}},"itin":[{"v":"d1","region":"[Perhentian]","t":"Jetty Kuala Besut - Perhentian Kecil (ketibaan)","en":"KUALA BESUT JETTY - PERHENTIAN KECIL","acc":"incl","meal":"ld","trp":"boatin","act":["Shared boat transfer dari Jetty Kuala Besut (~30-45 minit)","Check-in Mimpi Perhentian Resort (~3pm)","Free & easy + aktiviti pantai","Windmill Hill trekking","Longbeach Fireshow (malam)","Lunch & dinner di resort"],"eact":["Shared boat transfer from Kuala Besut Jetty (approx. 30-45 minutes)","Check-in at Mimpi Perhentian Resort (approx. 3pm)","Free & easy, beach activities","Windmill Hill trekking","Longbeach Fireshow (evening)","Lunch & dinner at resort"]},{"v":"d2","region":"[Perhentian]","t":"Perhentian 5-Points Snorkeling Trip (SIC)","en":"PERHENTIAN 5-POINTS SNORKELLING TRIP (SIC TOUR)","acc":"incl","meal":"bld","trp":"boatsnk","act":["Breakfast di resort","Boat snorkeling trip 5 points","Fish Point","Turtle Point (penyu)","Shark Point (jerung karang blacktip)","Kg Nelayan (lunch break)","Teluk Keke Beach","Nemo Point","Balik resort, free & easy","Dinner di resort"],"eact":["Breakfast at resort","5 Points Snorkelling Trip by boat","Fish Point","Turtle Point","Shark Point (blacktip reef shark)","Kg Nelayan (lunch break)","Teluk Keke Beach","Nemo Point","Return to resort, free & easy","Dinner at resort"]},{"v":"d3","region":"[Perhentian]","t":"Perhentian Kecil - Jetty Kuala Besut (berlepas)","en":"PERHENTIAN KECIL - KUALA BESUT JETTY","acc":"none","meal":"b","trp":"boatout","act":["Breakfast di resort","Free & easy / leisure","Check-out Mimpi Perhentian Resort","Shared boat transfer balik ke Jetty Kuala Besut"],"eact":["Breakfast at resort","Free & easy at leisure","Check-out from Mimpi Perhentian Resort","Shared boat transfer back to Kuala Besut Jetty"]}],"inclusions":["{auto}","{nights} nights accommodation at Mimpi Perhentian Resort, Perhentian Kecil (Default Standard Room, 2-3 pax sharing)","All meals as per itinerary - halal local food","Ground handling & tipping"],"exclusions":["Marine Park Entrance Fee (Adult RM5 / Child RM2) - paid directly at Kuala Besut Jetty","Surcharge for Non-Malaysian passport holders (quoted separately)","Domestic flights to Kota Bharu (KBR) or Kuala Terengganu (TGG)","Airport Transfer, Kota Bharu Airport to Kuala Besut Jetty (available as an add-on)","Optional activities (scuba diving, Pulau Rawa snorkelling, private boat charter)","Travel insurance / takaful","Personal expenses and additional meals"]},{"id":"ombak","name":"PT Perhentian &middot; Ombak Resort (3D2N) &mdash; rate card ARBA","pkgLabel":"Private Tour Perhentian - Ombak Resort","hotelLabel":"Ombak Perhentian Resort (3-Star)","days":3,"nights":2,"single":400,"labelCwb":"Child With Bed (6-11 years)","labelCnb":"Child No Bed (2-5 years)","tiers":[{"from":1,"to":1,"a":1510,"c":0,"n":0},{"from":2,"to":3,"a":1177,"c":1057,"n":657},{"from":4,"to":5,"a":1127,"c":1057,"n":657},{"from":6,"to":7,"a":1127,"c":1057,"n":657},{"from":8,"to":10,"a":1077,"c":1057,"n":657}],"peak":{"mode":"perNight","value":150,"windows":[]},"ext":{"night":{"normal":0,"peak":0},"day":{"normal":0,"peak":0},"marginPerPax":0,"paxPerVehicle":12,"rates":{"addnight":{"_default":[{"from":1,"to":99,"normal":475,"peak":475}]},"nightShort":{"_default":[{"from":1,"to":99,"normal":-400,"peak":-400}]}}},"itin":[{"v":"d1","region":"[Perhentian]","t":"Jetty Kuala Besut - Perhentian Kecil (ketibaan)","en":"KUALA BESUT JETTY - PERHENTIAN KECIL","acc":"incl","meal":"ld","trp":"boatin","act":["Shared boat transfer dari Jetty Kuala Besut (~30-45 minit)","Check-in Ombak Perhentian Resort (~3pm)","Free & easy + aktiviti pantai","Windmill Hill trekking","Longbeach Fireshow (malam)","Lunch & dinner di resort"],"eact":["Shared boat transfer from Kuala Besut Jetty (approx. 30-45 minutes)","Check-in at Ombak Perhentian Resort (approx. 3pm)","Free & easy, beach activities","Windmill Hill trekking","Longbeach Fireshow (evening)","Lunch & dinner at resort"]},{"v":"d2","region":"[Perhentian]","t":"Perhentian 5-Points Snorkeling Trip (SIC)","en":"PERHENTIAN 5-POINTS SNORKELLING TRIP (SIC TOUR)","acc":"incl","meal":"bld","trp":"boatsnk","act":["Breakfast di resort","Boat snorkeling trip 5 points","Fish Point","Turtle Point (penyu)","Shark Point (jerung karang blacktip)","Kg Nelayan (lunch break)","Teluk Keke Beach","Nemo Point","Balik resort, free & easy","Dinner di resort"],"eact":["Breakfast at resort","5 Points Snorkelling Trip by boat","Fish Point","Turtle Point","Shark Point (blacktip reef shark)","Kg Nelayan (lunch break)","Teluk Keke Beach","Nemo Point","Return to resort, free & easy","Dinner at resort"]},{"v":"d3","region":"[Perhentian]","t":"Perhentian Kecil - Jetty Kuala Besut (berlepas)","en":"PERHENTIAN KECIL - KUALA BESUT JETTY","acc":"none","meal":"b","trp":"boatout","act":["Breakfast di resort","Free & easy / leisure","Check-out Ombak Perhentian Resort","Shared boat transfer balik ke Jetty Kuala Besut"],"eact":["Breakfast at resort","Free & easy at leisure","Check-out from Ombak Perhentian Resort","Shared boat transfer back to Kuala Besut Jetty"]}],"inclusions":["{auto}","{nights} nights accommodation at Ombak Perhentian Resort, Perhentian Kecil (Default Standard Room, 2-3 pax sharing)","All meals as per itinerary - halal local food","Ground handling & tipping"],"exclusions":["Marine Park Entrance Fee (Adult RM5 / Child RM2) - paid directly at Kuala Besut Jetty","Surcharge for Non-Malaysian passport holders (quoted separately)","Domestic flights to Kota Bharu (KBR) or Kuala Terengganu (TGG)","Airport Transfer, Kota Bharu Airport to Kuala Besut Jetty (available as an add-on)","Optional activities (scuba diving, Pulau Rawa snorkelling, private boat charter)","Travel insurance / takaful","Personal expenses and additional meals"]},{"id":"florabay","name":"PT Perhentian &middot; Flora Bay Resort (3D2N) &mdash; rate card ARBA","pkgLabel":"Private Tour Perhentian - Flora Bay Resort","hotelLabel":"Flora Bay Resort (Budget)","days":3,"nights":2,"single":400,"labelCwb":"Child With Bed (6-11 years)","labelCnb":"Child No Bed (2-5 years)","tiers":[{"from":1,"to":1,"a":"request","c":"request","n":"request"},{"from":2,"to":3,"a":797,"c":597,"n":357},{"from":4,"to":5,"a":657,"c":597,"n":357},{"from":6,"to":7,"a":657,"c":597,"n":357},{"from":8,"to":10,"a":607,"c":597,"n":357}],"peak":{"mode":"perNight","value":50,"windows":[]},"ext":{"night":{"normal":0,"peak":0},"day":{"normal":0,"peak":0},"marginPerPax":0,"paxPerVehicle":12,"rates":{"addnight":{"_default":[{"from":1,"to":99,"normal":0,"peak":0}]},"nightShort":{"_default":[{"from":1,"to":99,"normal":0,"peak":0}]}}},"itin":[{"v":"d1","region":"[Perhentian]","t":"Jetty Kuala Besut - Perhentian Besar (ketibaan)","en":"KUALA BESUT JETTY - PERHENTIAN BESAR","acc":"incl","meal":"ld","trp":"boatin","act":["Shared boat transfer dari Jetty Kuala Besut (~30-45 minit)","Check-in Flora Bay Resort (~3pm)","Free & easy + aktiviti pantai","Windmill Hill trekking","Longbeach Fireshow (malam)","Lunch & dinner di resort"],"eact":["Shared boat transfer from Kuala Besut Jetty (approx. 30-45 minutes)","Check-in at Flora Bay Resort (approx. 3pm)","Free & easy, beach activities","Windmill Hill trekking","Longbeach Fireshow (evening)","Lunch & dinner at resort"]},{"v":"d2","region":"[Perhentian]","t":"Perhentian 5-Points Snorkeling Trip (SIC)","en":"PERHENTIAN 5-POINTS SNORKELLING TRIP (SIC TOUR)","acc":"incl","meal":"bld","trp":"boatsnk","act":["Breakfast di resort","Boat snorkeling trip 5 points","Fish Point","Turtle Point (penyu)","Shark Point (jerung karang blacktip)","Kg Nelayan (lunch break)","Teluk Keke Beach","Nemo Point","Balik resort, free & easy","Dinner di resort"],"eact":["Breakfast at resort","5 Points Snorkelling Trip by boat","Fish Point","Turtle Point","Shark Point (blacktip reef shark)","Kg Nelayan (lunch break)","Teluk Keke Beach","Nemo Point","Return to resort, free & easy","Dinner at resort"]},{"v":"d3","region":"[Perhentian]","t":"Perhentian Besar - Jetty Kuala Besut (berlepas)","en":"PERHENTIAN BESAR - KUALA BESUT JETTY","acc":"none","meal":"b","trp":"boatout","act":["Breakfast di resort","Free & easy / leisure","Check-out Flora Bay Resort","Shared boat transfer balik ke Jetty Kuala Besut"],"eact":["Breakfast at resort","Free & easy at leisure","Check-out from Flora Bay Resort","Shared boat transfer back to Kuala Besut Jetty"]}],"inclusions":["{auto}","{nights} nights accommodation at Flora Bay Resort, Perhentian Besar (Default Standard Room, 2-3 pax sharing)","All meals as per itinerary - halal local food","Ground handling & tipping"],"exclusions":["Marine Park Entrance Fee (Adult RM5 / Child RM2) - paid directly at Kuala Besut Jetty","Surcharge for Non-Malaysian passport holders (quoted separately)","Domestic flights to Kota Bharu (KBR) or Kuala Terengganu (TGG)","Airport Transfer, Kota Bharu Airport to Kuala Besut Jetty (available as an add-on)","Optional activities (scuba diving, Pulau Rawa snorkelling, private boat charter)","Travel insurance / takaful","Personal expenses and additional meals"]}]};
+window.ARBA_CALC_BOOT=function(){
+
+/* ============ Simple Calculator — enjin dipacu config (CALC_CFG) ============
+   Enjin ini generik. Semua data khusus destinasi datang dari CALC_CFG yang
+   disuntik tepat sebelum blok ini oleh scripts/build_calc.py.
+   Jangan hardcode apa-apa nombor destinasi di sini.                        */
+(function(){
+  var blk=document.querySelector('.block[data-topic="calc"]');
+  if(!blk||typeof CALC_CFG==="undefined")return;
+  var CFG=CALC_CFG, LOGO=(typeof ARBA_LOGO!=="undefined")?ARBA_LOGO:"";
+  var $c=function(id){return document.getElementById(id);};
+
+  /* ---------- varian pakej aktif ---------- */
+  var vi=0;
+  function V(){return CFG.variants[vi];}
+  /* Sesetengah destinasi ada kadar berbeza mengikut varian (contoh: kadar peak
+     bergantung tier hotel pakej). Varian boleh menimpa mana-mana seksyen config;
+     kalau varian tiada seksyen itu, nilai peringkat atas digunakan seperti biasa. */
+  function sect(k){var v=V();return (v&&v[k])||CFG[k]||{};}
+  function PK(){return sect("peak");}
+  function EX(){return sect("ext");}
+  /* deposit boleh berbeza ikut varian; kalau varian tiada, guna nilai peringkat atas */
+  function DEPO(){var v=V();return (v&&v.deposit!=null)?v.deposit:(CFG.deposit||0);}
+
+  /* ---------- kadar katalog ---------- */
+  function tierRow(p){
+    var t=V().tiers;
+    for(var i=0;i<t.length;i++)if(p>=t[i].from&&p<=t[i].to)return t[i];
+    return p<t[0].from?t[0]:t[t.length-1];
+  }
+  /* Sesetengah katalog tulis "on request" untuk satu band pax dan bukan satu harga
+     (contoh Flora Bay Perhentian: 1 pax tiada harga tersiar). Menulis 0 di situ
+     bermakna grand total RM 0 secara senyap - salah, dan itulah kelas pepijat yang
+     sepatutnya kelihatan. Tandakan `"a": "request"` (atau null) dalam tier itu:
+     aritmetik guna 0 supaya tiada NaN merebak, dan state.tierReq membawa amaran
+     ke baris nota KB serta dokumen quotation. Tier dengan nombor betul tidak
+     terjejas sama sekali. */
+  function tnum(x){return (x==="request"||x==null)?0:x;}
+  function tierReqRow(r){return !!(r&&(r.a==="request"||r.a==null));}
+  function tierOf(p){var r=tierRow(p);return[tnum(r.a),tnum(r.c),tnum(r.n)];}
+  function tierLabel(p){var r=tierRow(p);return r.from===r.to?(r.from+" pax"):(r.from+"-"+r.to+" pax");}
+  function maxPax(){var t=V().tiers;return t[t.length-1].to;}
+  function overMax(p){return p>maxPax();}
+
+  /* ---------- tarikh ---------- */
+  var MTH=["Januari","Februari","Mac","April","Mei","Jun","Julai","Ogos","September","Oktober","November","Disember"];
+  var MS=["Jan","Feb","Mac","Apr","Mei","Jun","Jul","Ogos","Sep","Okt","Nov","Dis"];
+  var EN=["January","February","March","April","May","June","July","August","September","October","November","December"];
+  var ENS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  function iso(d){var m=d.getMonth()+1,y=d.getDate();
+    return d.getFullYear()+"-"+(m<10?"0":"")+m+"-"+(y<10?"0":"")+y;}
+  function parseIso(s){return new Date(s+"T00:00:00");}
+  function shift(s,n){var x=parseIso(s);x.setDate(x.getDate()+n);return iso(x);}
+  function daysBetween(a,b){return Math.round((parseIso(b)-parseIso(a))/86400000);}
+  function todayIso(){return iso(new Date());}
+  function dfmt(d){return d.getDate()+" "+MS[d.getMonth()]+" "+d.getFullYear();}
+  function eshort(d){return d.getDate()+" "+ENS[d.getMonth()];}
+  function elong(d){return d.getDate()+" "+EN[d.getMonth()]+" "+d.getFullYear();}
+  function within(ds,r){return ds>=r[0]&&ds<=r[1];}
+
+  /* peak: sokong dua model — RM per pax per malam, atau peratus atas harga pakej */
+  function peakWindowsFor(){
+    var w=PK().windows||[];
+    return w.filter(function(x){return !x[2]||x[2]===V().id;});
+  }
+  /* Elemen ke-4 tetingkap (pilihan) = nilai khusus tetingkap itu; kalau tiada,
+     PK().value digunakan. Ini menyokong destinasi yang ada lebih daripada satu
+     kadar peak (contoh Hokkaido: +10% biasa, +15% Christmas & New Year). */
+  /* Elemen ke-4 boleh jadi rentetan "request" — tetingkap yang katalog tandakan
+     "price upon request". Ia tiada harga tersiar, jadi enjin tidak mengira apa-apa
+     dan memberi amaran; jangan reka nombor. */
+  function winReq(w){return !!(w&&w.length>3&&w[3]==="request");}
+  function winVal(w){return winReq(w)?0:((w&&w.length>3&&w[3]!=null)?w[3]:PK().value);}
+  /* Elemen ke-5 (pilihan) = nama musim untuk baris nota dan baris Season quotation,
+     contoh "High Season" / "Shoulder Season". Tanpa ia, "Peak Season" digunakan. */
+  function winLab(w){return (w&&w.length>4&&w[4])?w[4]:null;}
+  function inPeak(ds){
+    var w=peakWindowsFor(),hit=null;
+    /* kalau tetingkap bertindih (contoh 20 Dis ada dalam dua tetingkap Hokkaido),
+       ambil yang paling tinggi supaya keputusan tidak bergantung pada susunan.
+       Tetingkap "request" menang atas semua — harga tersiar tidak terpakai di situ. */
+    for(var i=0;i<w.length;i++){
+      if(!within(ds,w[i]))continue;
+      if(!hit){hit=w[i];continue;}
+      if(winReq(w[i])&&!winReq(hit)){hit=w[i];continue;}
+      if(winReq(hit))continue;
+      if(winVal(w[i])>winVal(hit))hit=w[i];
+    }
+    return hit;
+  }
+
+  /* ---------- pilihan dropdown ---------- */
+  var ACC=CFG.accOptions||[
+    {v:"incl",t:"Hotel (termasuk pakej)",cost:"incl"},
+    {v:"extra",t:"Hotel (malam tambahan)",cost:"night"},
+    {v:"none",t:"Tiada malam (checkout / balik)",cost:"zero"}];
+  var MEAL=CFG.mealOptions||[
+    {v:"none",t:"None",b:0,l:0,d:0,lbl:"-"},
+    {v:"b",t:"Breakfast",b:1,l:0,d:0,lbl:"International Breakfast"},
+    {v:"bl",t:"Breakfast & Lunch",b:1,l:1,d:0,lbl:"International Breakfast, Lunch"},
+    {v:"bd",t:"Breakfast & Dinner",b:1,l:0,d:1,lbl:"International Breakfast, Dinner"},
+    {v:"bld",t:"Breakfast, Lunch & Dinner",b:1,l:1,d:1,lbl:"International Breakfast, Lunch, Dinner"},
+    {v:"ld",t:"Lunch & Dinner",b:0,l:1,d:1,lbl:"Lunch, Dinner"},
+    {v:"l",t:"Lunch",b:0,l:1,d:0,lbl:"Lunch"},
+    {v:"d",t:"Dinner",b:0,l:0,d:1,lbl:"Dinner"}];
+  var TRP=CFG.trpOptions||[
+    {v:"incl",t:"Private Transport + Guide (termasuk)",cost:"incl",lbl:"Private Transport + Guide"},
+    {v:"air",t:"Airport Transfer + Guide (termasuk)",cost:"incl",lbl:"Airport Transfer + Guide"},
+    {v:"ext",t:"Private Transport + Guide (extension)",cost:"day",lbl:"Private Transport + Guide"},
+    {v:"none",t:"Tiada transport (free & easy)",cost:"zero",lbl:"-"}];
+  var GENERIC=[
+    {v:"fe",t:"Free & Easy",acc:"incl",meal:"b",trp:"none",act:["Free & easy"],
+     en:"FREE & EASY",eact:["Free & easy"]},
+    {v:"ext",t:"Extension - hari tambahan",acc:"extra",meal:"b",trp:"ext",
+     act:["Itinerari tambahan mengikut permintaan customer"],
+     en:"EXTENSION DAY",eact:["Itinerary as requested by customer"]},
+    {v:"cus",t:"Custom (tulis sendiri)",acc:"incl",meal:"b",trp:"incl",act:[],en:"CUSTOM",eact:[]}];
+  /* Perpustakaan blok itinerary (pilihan). Ia muncul dalam dropdown hari tetapi
+     BUKAN sebahagian itinerari default — loadDefault() hanya ambil V().itin.
+     Guna untuk destinasi yang ada pustaka blok hari rasmi (contoh Korea ProdReq 9). */
+  function library(){return V().library||CFG.library||[];}
+  function presets(){
+    return V().itin.map(function(p,i){
+      var o={};for(var k in p)o[k]=p[k];o.v=o.v||("d"+(i+1));return o;
+    }).concat(library()).concat(GENERIC);
+  }
+  /* Senarai untuk DROPDOWN sahaja - presets() kekal penuh supaya find() tidak pernah
+     gagal menyelesaikan satu preset yang masih dirujuk oleh hari yang ada.
+     - dedupe ikut `v`: blok pustaka yang guna `v` sama dengan GENERIC (contoh "ext")
+       dulu muncul DUA KALI dalam dropdown. Yang pertama menang, sama seperti find().
+     - CFG.hideGeneric: senarai `v` GENERIC yang disembunyikan bagi destinasi yang
+       kosnya tidak boleh dijamin (contoh Turki: "ext" dan "cus" - hari tanpa segmen
+       rate card tidak boleh diberi harga, jadi TC mesti pilih blok segmen). */
+  function dropdownPresets(){
+    var hide=CFG.hideGeneric||[],seen={},out=[];
+    presets().forEach(function(o){
+      if(seen[o.v])return;
+      seen[o.v]=1;
+      if(hide.indexOf(o.v)>=0&&GENERIC.some(function(g){return g.v===o.v;})
+         &&!library().some(function(l){return l.v===o.v;}))return;
+      out.push(o);
+    });
+    return out;
+  }
+  /* Kawasan hari ini — kunci untuk cari kadar transport yang betul.
+     Sandaran kepada `baseRegion`, iaitu kawasan hari PAKEJ asal pada slot itu:
+     bila hari berpandu ditukar kepada blok tanpa kawasan (contoh Free & Easy),
+     tolakan mesti tetap ikut kawasan hari yang dilepaskan (ProdReq 8.6 - Nami
+     -RM1,200 berbanding Seoul -RM1,000), bukan jatuh ke kadar _default. */
+  function dayRegion(d){
+    var pr=find(presets(),d.preset);
+    return (pr&&pr.region)||(d&&d.baseRegion)||"";
+  }
+  var ADDONS=[["-",0,0]].concat(CFG.addons||[]);
+  /* Kuantiti optional activity diisi sendiri ikut pax, supaya TC tidak perlu taip
+     nombor yang enjin sudah tahu. Elemen ke-4 add-on menentukan asasnya:
+        "pax" (atau tiada)  -> ikut bilangan pax (dewasa / kanak-kanak)
+        "unit" / "share"    -> satu unit (kos per transport / per hari, bukan per pax)
+     Opt-in melalui CFG.autoAddonQty supaya config destinasi lain tidak berubah. */
+  function addonBasis(i){var q=ADDONS[i];return (q&&q[3])||"pax";}
+  function autoQty(a){
+    if(!CFG.autoAddonQty||!a.auto||!a.i)return;
+    if(addonBasis(a.i)==="pax"){
+      a.qa=n("c_adult");
+      a.qc=ADDONS[a.i][2]?(n("c_cwb")+n("c_cnb")):0;
+    }else{a.qa=1;a.qc=0;}
+  }
+  function syncAutoQty(){days.forEach(function(d){d.addons.forEach(autoQty);});}
+
+  /* ---------- util ---------- */
+  var CUR=CFG.currency||"RM";
+  function rm(v){return CUR+" "+(Math.round(v*100)/100).toLocaleString("en-MY",{minimumFractionDigits:2,maximumFractionDigits:2});}
+  function rm0(v){return CUR+" "+Math.round(v).toLocaleString("en-MY");}
+  function n(id){var e=$c(id);var v=e?parseFloat(e.value):0;return isNaN(v)?0:v;}
+  function esc2(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+  function find(arr,v){for(var i=0;i<arr.length;i++)if(arr[i].v===v)return arr[i];return arr[0];}
+  function opts(arr,sel){return arr.map(function(o){
+    return "<option value='"+o.v+"'"+(o.v===sel?" selected":"")+">"+o.t+"</option>";}).join("");}
+  /* sama seperti opts() tetapi kumpulkan mengikut medan `g` — untuk pustaka blok
+     itinerary yang panjang, supaya dropdown boleh dilayari ikut bandar/tema */
+  function optsG(arr,sel){
+    var out="",open=false,cur=null;
+    for(var i=0;i<arr.length;i++){
+      var o=arr[i],g=o.g||"";
+      if(g!==cur){
+        if(open){out+="</optgroup>";open=false;}
+        if(g){out+="<optgroup label='"+esc2(g)+"'>";open=true;}
+        cur=g;
+      }
+      out+="<option value='"+o.v+"'"+(o.v===sel?" selected":"")+">"+o.t+"</option>";
+    }
+    if(open)out+="</optgroup>";
+    return out;
+  }
+  /* amaun bertanda — pilihan boleh menolak dari harga katalog, jadi jangan andai '+' */
+  function sgn(v){return (v<0?"-":"+")+rm0(Math.abs(v));}
+  /* Label pilihan untuk SATU hari: awalan kawasan hari itu + amaun sebenar yang akan
+     dikenakan. Tujuannya supaya TC nampak kos itu berlabuh pada blok itinerary yang
+     dipilih (contoh "[Nami] Private Transport ... - RM 1,400"), bukan angka generik. */
+  function optsFor(arr,sel,reg,kind){
+    return arr.map(function(o){
+      var lbl=(reg&&kind==="trp"&&(o.guided||o.cost==="day")?reg+" ":"")+o.t,bits=[];
+      if(kind==="trp"&&o.cost==="day"){
+        var dr=dayRateFor(reg);
+        bits.push(dr.amt?rm0(dr.amt):"kadar belum diisi");
+      }
+      if(kind==="acc"&&o.cost==="night"){
+        var nr=accNightRate(o,reg);
+        bits.push(nr?rm0(nr)+" per pax":"kadar belum diisi");
+      }
+      if(kind==="meal"){var ma=mealAmt(o);if(ma)bits.push(sgn(ma)+" per pax");}
+      var a=optAmt(o,reg);
+      if(a.unitPax)bits.push(sgn(a.unitPax)+" per pax");
+      if(a.unitVeh)bits.push(sgn(a.unitVeh));
+      if(a.gap&&!bits.length)bits.push("kadar belum diisi");
+      if(bits.length)lbl+=" &mdash; "+bits.join(" &middot; ");
+      return "<option value='"+o.v+"'"+(o.v===sel?" selected":"")+">"+lbl+"</option>";
+    }).join("");
+  }
+  function addonOpts(sel){return ADDONS.map(function(a,i){
+    return "<option value='"+i+"'"+(i===sel?" selected":"")+">"+a[0]+(a[1]?" ("+rm0(a[1])+")":"")+"</option>";}).join("");}
+
+  /* ---------- model hari ---------- */
+  var days=[],state={},dragFrom=null;
+  /* Hari yang TC tambah sendiri ditanda `ext:true`. Bezanya penting: harga katalog
+     sudah termasuk hari berpandu + malam pakej, jadi hari PAKEJ mesti kekal 'termasuk'
+     walau apa pun blok itinerary yang dipilih. Hanya hari tambahan yang berkos.
+     CFG.extDefaults = {acc:"...", trp:"..."} menetapkan pilihan mana yang dipakai
+     bila satu blok 'termasuk' diletak pada hari tambahan. */
+  var EXTD=CFG.extDefaults||{};
+  /* Tukar blok itinerary = enjin pilih sendiri pilihan transport/hotel yang betul.
+     Keputusan bergantung pada PERALIHAN, bukan sekadar sama ada hari itu tambahan:
+
+       hari sudah berpandu  + blok berpandu     -> kekal 'termasuk pakej' (swap, RM 0)
+       hari tiada transport + blok berpandu     -> hari berpandu tambahan  -> berkos
+       hari sudah berpandu  + blok tanpa guide  -> tolak dari katalog (ProdReq 8.6)
+       hari tambahan (ext)  + apa-apa blok      -> sentiasa berkos
+
+     TC masih boleh menimpa mana-mana pilihan selepas itu. */
+  /* Pilihan yang sudah menanggung kosnya sendiri — auto-substitusi tidak boleh
+     menimpanya, sebab config sengaja memilih pilihan itu untuk blok tersebut. */
+  function hasOwnCost(o){
+    return !!(o.perPax||o.perVehicle||o.perPaxRate||o.perVehicleRate);
+  }
+  function applyPreset(d,pr){
+    var oldTrp=find(TRP,d.trp);
+    var wasGuided=!!oldTrp.guided,               /* hari berpandu (pakej atau tambahan) */
+        wasExt=oldTrp.cost==="day",              /* sudah ditanda hari tambahan berkos  */
+        wasDrop=!!EXTD.trpDrop&&oldTrp.v===EXTD.trpDrop;  /* sudah ditanda tolak        */
+    d.preset=pr.v;d.acc=pr.acc;d.meal=pr.meal;d.trp=pr.trp;
+    var newAcc=find(ACC,pr.acc),newTrp=find(TRP,pr.trp);
+    if(d.ext){
+      if(EXTD.acc&&newAcc.cost==="incl")d.acc=EXTD.acc;
+      if(EXTD.trp&&newTrp.cost==="incl")d.trp=EXTD.trp;
+      return;
+    }
+    /* Jadi hari tambahan berkos bila pakej tiada transport untuk hari ini, ATAU bila
+       hari ini sudah ditanda tambahan sebelum ini (tukar blok lagi jangan hilangkan kos). */
+    if(EXTD.trp&&newTrp.guided&&newTrp.cost==="incl"&&(!wasGuided||wasExt))d.trp=EXTD.trp;
+    /* Kekalkan tolakan bila hari berpandu pakej ditukar kepada blok tanpa guide —
+       KECUALI blok itu sendiri sudah bawa kos (contoh KTX / flight pindah bandar),
+       kerana pilihannya sendiri yang betul, bukan pilihan tolakan. */
+    else if(EXTD.trpDrop&&!newTrp.guided&&newTrp.cost==="zero"&&!hasOwnCost(newTrp)
+            &&(wasGuided||wasDrop))
+      d.trp=EXTD.trpDrop;
+  }
+  function mkDay(p,isExt,baseRegion){
+    var pr=find(presets(),p||"ext");
+    var d={preset:pr.v,custom:"",date:"",acc:pr.acc,meal:pr.meal,trp:pr.trp,
+           ext:!!isExt,baseRegion:baseRegion||"",
+           addons:[{i:0,qa:0,qc:0,auto:false}],open:false};
+    applyPreset(d,pr);
+    return d;
+  }
+  function loadDefault(){
+    days=presets().slice(0,V().itin.length).map(function(p){return mkDay(p.v,false,p.region);});
+  }
+  function lastIdx(){return days.length-1;}
+  function autoDates(){var dep=$c("c_dep").value;days.forEach(function(d,i){d.date=dep?shift(dep,i):"";});}
+  function syncReturn(){var dep=$c("c_dep").value;if(dep)$c("c_ret").value=shift(dep,days.length-1);}
+  function syncDaysToDates(){
+    var dep=$c("c_dep").value,ret=$c("c_ret").value;
+    if(!dep||!ret)return;
+    var target=daysBetween(dep,ret)+1;
+    if(target<2||target>60){syncReturn();return;}
+    while(days.length<target)days.splice(Math.max(1,lastIdx()),0,mkDay("ext",true));
+    while(days.length>target&&days.length>2)days.splice(Math.max(1,lastIdx()-1),1);
+    autoDates();
+  }
+
+  /* ---------- kadar bergantung musim ---------- */
+  function payPax(){return n("c_adult")+n("c_cwb")+n("c_cnb");}
+  function vehicles(){return Math.max(1,Math.ceil((payPax()||1)/(EX().paxPerVehicle||7)));}
+  function isPeakTrip(){return (state.season&&state.season.peakNights)>0;}
+  /* Kadar extension boleh datang dalam dua bentuk:
+       ext.night / ext.day        -> satu pasang {normal,peak} untuk semua saiz group
+       ext.nightTiers / dayTiers  -> [{from,to,normal,peak}] bila kadar ikut bilangan pax
+                                     (contoh NZ: transport RM2300 untuk 2-3 pax, RM3600 untuk 7-10)
+     Padanan tier ikut julat PERTAMA yang muat, sama seperti tierRow(), jadi julat
+     bertindih dalam rate sheet (2-3, 3-4, 4-5 ...) berkelakuan seperti bracket kapasiti. */
+  function extTier(list,p){
+    for(var i=0;i<list.length;i++)if(p>=list[i].from&&p<=list[i].to)return list[i];
+    return p<list[0].from?list[0]:list[list.length-1];
+  }
+  function extRate(flat,tiers){
+    var r=(tiers&&tiers.length)?extTier(tiers,payPax()||1):(flat||{normal:0,peak:0});
+    return isPeakTrip()?(r.peak||0):(r.normal||0);
+  }
+  function nightRate(){var e=EX();return extRate(e.night,e.nightTiers);}
+  /* Pilihan accommodation boleh bawa `nightRate` (kunci ext.rates) kalau malam
+     tambahannya ada kadar tersiar sendiri — contoh malam 4 bintang RM400 (ProdReq 7),
+     bukan malam 3 bintang RM250 campur upgrade. Kalau tiada, ext.night dipakai. */
+  function accNightRate(o,region){
+    if(o&&o.nightRate){var a=rateAmt(o.nightRate,region);return a==null?0:a;}
+    return nightRate();
+  }
+  /* ---------- breakfast ikut varian ----------
+     Sesetengah pakej memang sudah termasuk breakfast hotel dan sesetengah tidak
+     (Perth: Standard 3 bintang apartment tanpa breakfast, Premium 4 bintang hotel
+     dengan breakfast). Blok itinerary DIKONGSI antara varian, jadi blok yang
+     membawa breakfast akan menjanjikan breakfast yang tidak dijual bila dipilih
+     pada varian Standard -- dan menjatuhkannya bila blok tanpa breakfast dipilih
+     pada Premium. `variants[].breakfast` memaksa komponen breakfast mengikut
+     varian supaya TC tidak perlu fikir, dan mealDelta kekal neutral kerana
+     baseline dan pilihan semasa kedua-duanya dinormalkan oleh mealOf().
+     Pilihan bertanda `bfLock` dikecualikan -- guna untuk hari ketibaan, yang tiada
+     breakfast pada mana-mana varian. Tanpa `variants[].breakfast`, mealOf() pulang
+     pilihan itu sendiri, jadi config destinasi lain tidak berubah sama sekali. */
+  function bfOn(){var v=V();return (v&&v.breakfast!=null)?!!v.breakfast:null;}
+  function mealOf(key){
+    var o=find(MEAL,key),on=bfOn();
+    if(on===null||!o||o.bfLock)return o;
+    var c={},k;for(k in o)c[k]=o[k];
+    c.b=on?1:0;
+    var parts=String(o.lbl==null?"":o.lbl).split(", ").filter(function(x){
+      return x&&x!=="-"&&!/breakfast/i.test(x);});
+    if(on)parts.unshift(CFG.breakfastLabel||"Hotel Breakfast");
+    c.lbl=parts.length?parts.join(", "):"-";
+    return c;
+  }
+  function mealRate(){return CFG.meals||{lunch:0,dinner:0};}
+  /* Bilangan hidangan satu pilihan meal (breakfast + lunch + dinner).
+     Bila varian mengisytiharkan `breakfast`, breakfast ialah komponen BILIK, bukan
+     hidangan yang boleh dijual atau dikreditkan satu-satu - jadi ia dikeluarkan dari
+     kiraan mealDelta sepenuhnya. Tanpa ini, memilih kod `bfLock` (hari ketibaan) pada
+     hari hotel akan MENGKREDITKAN breakfast, dan TC boleh 'jual balik' breakfast yang
+     memang datang bersama bilik. */
+  function mealCount(o){
+    if(!o)return 0;
+    var bf=bfOn()===null?(o.b?1:0):0;
+    return bf+(o.l?1:0)+(o.d?1:0);
+  }
+  /* CFG.mealDelta = {add, drop} - kadar per pax PER HIDANGAN bila TC menambah atau
+     membuang hidangan berbanding apa yang blok itinerary itu sendiri isytiharkan.
+     Ini menyelesaikan dua masalah sekaligus:
+       - CFG.meals mengenakan SETIAP lunch/dinner dalam itinerari, termasuk yang sudah
+         ada dalam harga katalog -> double-count. Sebab itu ia diset 0.
+       - Tetapi dengan 0, menukar dropdown meal jadi PERCUMA secara senyap.
+     Delta berbanding blok menyelesaikan kedua-duanya: tiada perubahan = RM 0, dan
+     setiap hidangan yang ditambah/dibuang dicaj pada kadarnya sendiri (tidak simetri:
+     tambah RM45, tolak RM30). Baseline ialah `meal` blok itu, bukan indeks hari, jadi
+     ia kekal betul walaupun hari disusun semula atau ditambah. */
+  function mealDeltaOf(d,pr,pay){
+    var md=CFG.mealDelta;if(!md)return null;
+    var basen=mealCount(mealOf((pr&&pr.meal)||d.meal)),
+        curn=mealCount(mealOf(d.meal)),dn=curn-basen;
+    if(!dn)return null;
+    var per=dn>0?dn*(md.add||0):dn*(md.drop||0);
+    return {meals:dn,perPax:per,total:per*(pay||0)};
+  }
+  /* Kos makan satu hari untuk satu pax, ikut pilihan meal yang dipilih. */
+  function mealAmt(o){var m=mealRate();
+    return (o.l||0)*(m.lunch||0)+(o.d||0)*(m.dinner||0);}
+  /* Hint yang menyebut kadar sebenar, bukan "ikut kadar makan" yang kabur. */
+  function mealHint(o){
+    var m=mealRate(),b=[];
+    if(o.l&&m.lunch)b.push(o.l+" lunch x "+rm0(m.lunch));
+    if(o.d&&m.dinner)b.push(o.d+" dinner x "+rm0(m.dinner));
+    if(b.length)return b.join(" + ")+" = "+sgn(mealAmt(o))+" per pax";
+    if(o.l||o.d)return "Kadar makan belum diisi &mdash; untuk paparan quotation sahaja";
+    return "";
+  }
+  /* Hari "berpandu" = hari yang ada transport + guide (pilihan bertanda guided:true).
+     `free` = berpandu tetapi dikira sebagai bahagian pakej (cost incl);
+     `paid` = berpandu tetapi dicaj sebagai hari tambahan (cost day). */
+  function guidedOf(list){
+    var free=0,paid=0;
+    list.forEach(function(x){
+      var o=find(TRP,x.trp);
+      if(!o||!o.guided)return;
+      if(o.cost==="day")paid++;else free++;
+    });
+    return {free:free,paid:paid,total:free+paid};
+  }
+  function guidedBase(){return guidedOf(V().itin||[]);}
+
+  /* ---------- kadar berkunci: kunci -> region -> band pax -> normal/peak ----------
+     ext.rates = { kunci: { "<region>"|"_default": [{from,to,normal,peak}] } }
+     Satu mekanisme untuk semua kadar yang bergantung pada kawasan itinerary, saiz
+     group dan musim. Pulang null bila kunci/region/band tiada dalam sumber — pemanggil
+     menandakannya sebagai 'kadar belum diisi' supaya TC nampak, bukan diam-diam free. */
+  function rateAmt(key,region){
+    var m=(EX().rates||{})[key];
+    if(!m)return null;
+    var list=(region&&m[region])||m._default;
+    if(!list||!list.length)return null;
+    var b=extTier(list,payPax()||1);
+    var a=isPeakTrip()?(b.peak!=null?b.peak:b.normal):b.normal;
+    return (a==null)?null:a;
+  }
+  /* Kadar hari extension. Kalau config ada ext.rates.day, ia MENGGANTIKAN ext.day —
+     tiada fallback senyap, sebab region tanpa kadar tersiar mesti kelihatan sebagai gap. */
+  /* Adakah destinasi ini memang ada kadar ikut kawasan? Destinasi tanpa ProdReq
+     (contoh Switzerland) hanya ada `_default`, jadi menyuruh TC "pilih blok supaya
+     kadar ikut kawasan" mengelirukan — tiada blok yang akan mengubahnya. */
+  function hasRegions(){
+    var m=(EX().rates||{}).day;
+    if(!m)return false;
+    for(var k in m)if(Object.prototype.hasOwnProperty.call(m,k)&&k!=="_default")return true;
+    return false;
+  }
+  function dayRateFor(region){
+    var e=EX();
+    if(e.rates&&e.rates.day){var a=rateAmt("day",region);return{amt:a||0,gap:!a};}
+    var f=extRate(e.day,e.dayTiers);return{amt:f,gap:!f};
+  }
+  function dayRate(region){return dayRateFor(region).amt;}
+  /* Apa yang satu pilihan dropdown tambah (atau tolak) untuk satu hari.
+     perPax / perVehicle = nombor literal; perPaxRate / perVehicleRate = kunci ext.rates. */
+  function optAmt(o,region){
+    var perPax=0,perVeh=0,gap=false;
+    /* perVehicleQty: berapa kali kos per-kenderaan itu berlaku dalam SATU hari.
+       Contoh pindah bandar perlu 2 transfer (hotel->stesen, stesen->hotel). */
+    var vq=(o.perVehicleQty!=null)?o.perVehicleQty:1;
+    if(o.perPax!=null)perPax+=o.perPax;
+    if(o.perVehicle!=null)perVeh+=o.perVehicle*vq;
+    /* Kadar 0 biasanya bermakna "tiada kadar tersiar" -> gap (itu kontrak asal, dan
+       Krabi/Perth bergantung padanya). Tetapi sesetengah katalog memang menyiarkan
+       SIFAR: Semporna v4 tulis "-" untuk upgrade Seafest Boutique dan Nusakuya /
+       Blue Ocean (harga sama dengan base, cuma surcaj peak berbeza). Pilihan
+       bertanda `zeroOk` mengaku sifar itu memang harga tersiar, jadi tiada cip
+       merah palsu. Pilihan tanpa tanda ini tidak berubah sama sekali. */
+    if(o.perPaxRate){var a=rateAmt(o.perPaxRate,region);
+      if(a==null||(!a&&!o.zeroOk))gap=true;perPax+=a||0;}
+    if(o.perVehicleRate){var b=rateAmt(o.perVehicleRate,region);
+      if(b==null||(!b&&!o.zeroOk))gap=true;perVeh+=(b||0)*vq;}
+    return {unitPax:perPax,unitVeh:perVeh,
+            pax:perPax*payPax(),veh:perVeh*vehicles(),gap:gap};
+  }
+  /* label Inggeris untuk baris quotation; `t` kekal Melayu untuk UI KB */
+  function optLine(o){return o.line||o.t;}
+
+  /* Dengan autoNights, malam tambahan dikira di peringkat TRIP (panjang trip vs
+     `variants[].nights`), jadi ia tidak berlabuh pada mana-mana hari secara semula
+     jadi - baris hari jadi bisu walaupun grand total naik RM300/pax. Peta ini
+     menetapkan hari MANA yang menanggung setiap malam tambahan, supaya ia boleh
+     diflagkan berasingan daripada kos transport.
+     Keutamaan: hari yang TC tambah sendiri (`ext`) dahulu; kalau masih berbaki
+     (contoh return date ditarik tanpa hari ditanda ext), ambil dari hari terakhir. */
+  function extraNightMap(){
+    var autoN=!!EX().autoNights;if(!autoN)return {};
+    var base=V().nights||0,selfDrop=0;
+    days.forEach(function(x){var ac=find(ACC,x.acc);if(ac.dropsNight)selfDrop++;});
+    var over=Math.max(0,Math.max(0,days.length-1-selfDrop)-base);
+    var map={},n=0;
+    days.forEach(function(x,i){
+      if(n>=over)return;
+      var ac=find(ACC,x.acc);
+      if(x.ext&&ac.cost!=="zero"&&!ac.dropsNight){map[i]=1;n++;}
+    });
+    for(var i=days.length-1;i>=0&&n<over;i--){
+      if(map[i])continue;
+      var ac2=find(ACC,days[i].acc);
+      if(ac2.cost!=="zero"&&!ac2.dropsNight){map[i]=1;n++;}
+    }
+    return map;
+  }
+  function dayParts(d,idx){
+    var pay=payPax(),mr=mealRate(),reg=dayRegion(d);
+    var pr=find(presets(),d.preset);
+    var ml=mealOf(d.meal),tp=find(TRP,d.trp),ac=find(ACC,d.acc),c=0,gap=false;
+    /* Setiap tambah/tolak dikumpul sebagai satu entri supaya baris hari boleh
+       memaparkannya satu-persatu - TC perlu tahu item mana sudah ditolak, bukan
+       sekadar satu jumlah bersih. `scope:"trip"` = amaun itu dikira di peringkat
+       keseluruhan trip (bukan hari), jadi ia dipapar sebagai maklumat sahaja dan
+       TIDAK ditambah ke dalam kos hari (elak kira dua kali). */
+    var adj=[];
+    function A(label,amt,scope){if(amt)adj.push({label:label,amt:amt,scope:scope||"day"});}
+    /* Malam tambahan yang kadarnya datang dari `nightRate` boleh tiada kadar tersiar
+       untuk kawasan/musim itu (contoh NZ: rate sheet hanya ada lajur peak). Itu satu
+       gap, bukan malam percuma - tandakannya seperti gap kadar transport. */
+    if(ac.cost==="night"){var _nr=accNightRate(ac,reg);c+=_nr*pay;
+      A("Malam tambahan "+rm0(_nr)+"/pax",_nr*pay);
+      if(ac.nightRate&&!_nr)gap=true;}
+    var mfix=(ml.l*mr.lunch+ml.d*mr.dinner)*pay;
+    c+=mfix; A("Meal",mfix);
+    /* delta meal berbanding blok - inilah yang membuat dropdown meal tidak lagi percuma */
+    var mdl=mealDeltaOf(d,pr,pay);
+    if(mdl){c+=mdl.total;
+      A((mdl.meals>0?"Tambah ":"Tolak ")+Math.abs(mdl.meals)+" meal "+
+        sgn(mdl.perPax)+"/pax",mdl.total);}
+    if(tp.cost==="day"){var dr=dayRateFor(reg);c+=dr.amt*vehicles();
+      A("Transport"+(reg?" "+reg:""),dr.amt*vehicles());if(dr.gap)gap=true;}
+    [ac,ml,tp].forEach(function(o){var a=optAmt(o,reg);c+=a.pax+a.veh;
+      if(a.pax)A(optLine(o)+" "+sgn(a.pax/(pay||1))+"/pax",a.pax);
+      if(a.veh)A(optLine(o),a.veh);
+      if(a.gap)gap=true;});
+    /* Tolakan malam yang ditanggung di peringkat trip (pilihan dropsNight). Ia TIDAK
+       masuk kos hari, tetapi mesti kelihatan pada hari itu - kalau tidak baris hari
+       tulis "Termasuk" sedangkan grand total turun. */
+    /* CFG.dropOwnRate (opt-in): bila pilihan 'tanpa hotel' membawa perPaxRate
+       sendiri, tolakannya SUDAH diitemise oleh gelung optAmt di atas — baris trip
+       tambahan di sini akan mengira dua kali pada cip hari (grand total tidak
+       terjejas). Destinasi tanpa flag ini kekal seperti dulu. */
+    if(ac.dropsNight&&!(CFG.dropOwnRate&&ac.perPaxRate)){
+      var ns=rateAmt("nightShort","");
+      if(ns)adj.push({label:"Tolak 1 malam pakej "+sgn(ns)+"/pax",amt:ns*pay,scope:"trip"});
+    }
+    /* Malam tambahan hotel - diflagkan BERASINGAN daripada transport, guna kadar
+       sebenar yang terpakai (normal atau peak, ikut tarikh trip). */
+    if(idx!=null&&extraNightMap()[idx]){
+      var nr=nightRate();
+      adj.push({label:"Malam tambahan hotel "+(nr?sgn(nr)+"/pax":"kadar belum diisi"),
+                amt:nr*pay,scope:"trip"});
+    }
+    d.addons.forEach(function(a){var q=ADDONS[a.i];
+      if(!a.i)return;
+      var at=a.qa*q[1]+a.qc*(q[2]||0);c+=at;A(q[0],at);});
+    adj.forEach(function(x){if(x.scope==="trip")c+=x.amt;});
+    return {cost:c,gap:gap,region:reg,adj:adj};
+  }
+  function dayCost(d,idx){return dayParts(d,idx).cost;}
+
+  /* ---------- render baris hari ---------- */
+  function dayHtml(d,idx){
+    var P=dropdownPresets(),pr=find(presets(),d.preset);
+    var nm=d.preset==="cus"?(d.custom||"Custom"):pr.t;
+    var ml=mealOf(d.meal),tp=find(TRP,d.trp),ac=find(ACC,d.acc);
+    var parts=dayParts(d,idx),cost=parts.cost,reg=parts.region;
+    /* Destinasi sebenar hari ini. Nama hari sahaja ("Seoul City") tidak cukup
+       untuk TC semak itinerary, jadi senarai ini dipapar terus pada baris hari. */
+    var acts=(pr.act&&pr.act.length)?pr.act:[];
+    var dt=d.date?dfmt(parseIso(d.date)):"Tiada tarikh";
+    /* hint setiap medan: kadar sebenar yang dikenakan untuk hari ini, ikut region */
+    function hint(o,base){
+      var a=optAmt(o,reg),bits=[];
+      if(base)bits.push(base);
+      if(a.unitPax)bits.push(sgn(a.unitPax)+" per pax");
+      if(a.unitVeh)bits.push(sgn(a.unitVeh)+" per transport");
+      if(a.gap)bits.push("kadar belum diisi");
+      return bits.length?bits.join(" &middot; "):"Tiada kos tambahan";
+    }
+    var _dr=dayRateFor(reg);
+    var ao=d.addons.map(function(a,ai){
+      var q=ADDONS[a.i];
+      return "<div class='aorow' data-ai='"+ai+"'>"+
+        "<select class='d-ai'>"+addonOpts(a.i)+"</select>"+
+        "<input class='qin d-aqa' type='number' min='0' value='"+a.qa+"' title='"+
+        (a.auto?"Qty dewasa - diisi sendiri ikut pax, boleh ubah":"Qty dewasa")+"'>"+
+        "<input class='qin d-aqc' type='number' min='0' value='"+a.qc+"' title='"+
+        (a.auto?"Qty kanak-kanak - diisi sendiri ikut pax, boleh ubah":"Qty kanak-kanak")+"'>"+
+        "<span class='aosum'>"+(a.i?rm0(a.qa*q[1]+a.qc*q[2]):"&mdash;")+"</span>"+
+        "<button type='button' class='xbtn d-aodel' title='Buang add-on'>&times;</button></div>";
+    }).join("");
+    return "<details class='dayc'"+(d.open?" open":"")+" data-i='"+idx+"'>"+
+      "<summary draggable='true'><span class='dgrip' title='Seret untuk susun semula'>&#10303;</span>"+
+      "<span class='dnum"+(d.ext?" dnumx":"")+"'"+
+      (d.ext?" title='Hari tambahan &mdash; berkos di atas harga katalog'":"")+">"+
+      (idx+1)+"</span><span class='ddate'>"+dt+"</span>"+
+      "<span class='dname'><span class='dnm'>"+esc2(nm)+"</span>"+
+      (acts.length?"<span class='dprev'>"+esc2(acts.join(" \u00b7 "))+"</span>":"")+"</span>"+
+      "<span class='dchips'>"+(reg?"<span class='dchip dreg'>"+esc2(reg)+"</span>":"")+
+      "<span class='dchip'>"+ml.t+"</span>"+
+      "<span class='dchip'>"+(reg&&tp.guided?reg+" ":"")+tp.t.replace(/ \(.*\)/,"")+"</span>"+
+      (parts.gap?"<span class='dchip dwarn' title='Kadar untuk kawasan ini tiada dalam katalog/ProdReq'>kadar?</span>":"")+
+      /* Blok bertanda mustPick ialah placeholder: hari itu belum berlabuh pada mana-mana
+         segmen rate card, jadi kosnya BELUM ditetapkan. Tandakan merah supaya ia tidak
+         boleh terlepas senyap ke dalam quotation. */
+      (pr&&pr.mustPick?"<span class='dchip dwarn' title='Hari ini belum berlabuh pada segmen rate card - pilih satu blok itinerary'>pilih blok</span>":"")+
+      /* Satu cip per tambah/tolak, supaya TC nampak item mana sudah ditolak dan
+         mana belum - bukan sekadar jumlah bersih hari itu. */
+      (parts.adj||[]).map(function(x){
+        return "<span class='dchip dadj"+(x.amt<0?" dded":"")+
+          (x.scope==="trip"?" dtrip":"")+"' title='"+
+          (x.scope==="trip"
+            ?"Dikira di peringkat keseluruhan trip, bukan hari ini"
+            :"Dikira pada hari ini")+"'>"+esc2(x.label)+" &middot; "+sgn(x.amt)+"</span>";
+      }).join("")+
+      "<span class='dchip dcost"+(cost?" on":"")+(cost<0?" dded":"")+"'>"+
+      (cost?sgn(cost):"Termasuk")+"</span></span>"+
+      "<span class='dacts'>"+
+      "<button type='button' class='xbtn d-up' title='Naik'>&#9650;</button>"+
+      "<button type='button' class='xbtn d-down' title='Turun'>&#9660;</button>"+
+      "<button type='button' class='xbtn d-dup' title='Salin hari'>&#10697;</button>"+
+      "<button type='button' class='xbtn d-del' title='Buang hari'>&times;</button></span></summary>"+
+      "<div class='dbody'><div class='cgrid'>"+
+      "<label class='fld'><span class='fl'>Itinerary</span><select class='d-preset'>"+optsG(P,d.preset)+"</select>"+
+      "<span class='fh'>"+(reg
+        ?("Kawasan <b>"+esc2(reg)+"</b> &mdash; kadar transport hari ini ikut kawasan ini")
+        :hasRegions()
+          ?"Tiada kawasan &mdash; pilih blok itinerary supaya kadar transport ikut kawasannya"
+          :"Kadar transport satu kadar rata untuk destinasi ini &mdash; tiada kadar ikut kawasan")+
+      "</span></label>"+
+      (d.preset==="cus"?"<label class='fld'><span class='fl'>Nama itinerary</span><input class='d-custom' type='text' value='"+esc2(d.custom)+"' placeholder='Tulis nama hari'></label>":"")+
+      "<label class='fld'><span class='fl'>Accommodation</span><select class='d-acc'>"+optsFor(ACC,d.acc,reg,"acc")+"</select>"+
+      "<span class='fh'>"+hint(ac,ac.cost==="night"?(accNightRate(ac,reg)?rm0(accNightRate(ac,reg))+" per pax":"kadar belum diisi"):"")+"</span></label>"+
+      "<label class='fld'><span class='fl'>Meal</span><select class='d-meal'>"+optsFor(MEAL,d.meal,reg,"meal")+"</select>"+
+      "<span class='fh'>"+hint(ml,mealHint(ml))+"</span></label>"+
+      "<label class='fld'><span class='fl'>Transport</span><select class='d-trp'>"+optsFor(TRP,d.trp,reg,"trp")+"</select>"+
+      "<span class='fh'>"+hint(tp,tp.cost==="day"?(_dr.amt?rm0(_dr.amt)+" x "+vehicles()+" kenderaan":"kadar belum diisi"):"")+"</span></label>"+
+      "</div>"+
+      (acts.length?"<div class='dstops'><span class='fl'>Itinerary hari ini</span>"+
+        "<ul class='dlist'>"+acts.map(function(x){return "<li>"+esc2(x)+"</li>";}).join("")+
+        "</ul></div>":"")+
+      "<div class='aowrap'><span class='fl'>Optional activity</span>"+ao+
+      "<button type='button' class='cbtn cbtn3 d-aoadd'>+ Tambah activity</button></div></div></details>";
+  }
+  function renderDays(){$c("c_days").innerHTML=days.map(dayHtml).join("");}
+
+  /* ---------- kiraan ---------- */
+  function compute(){
+    syncAutoQty();
+    var v=V(),mr=mealRate();
+    var ad=n("c_adult"),cwb=n("c_cwb"),cnb=n("c_cnb"),inf=n("c_inf");
+    var pay=ad+cwb+cnb,t=tierOf(pay||v.tiers[0].from),dep=$c("c_dep").value||"";
+
+    var nights=0,extraNights=0,nightAdd=0,extraDayCount=0,mealsL=0,mealsD=0,transfers=0,nightDates=[];
+    /* kos peringkat pilihan dikumpul di sini: per pax dilipat ke harga per pax,
+       per kenderaan jadi baris sendiri dalam ringkasan (kedua-dua boleh negatif) */
+    var optPax={},optVeh={},extAgg={},anyGap=false,selfDrop=0;
+    days.forEach(function(d){
+      var ac=find(ACC,d.acc),ml=mealOf(d.meal),tp=find(TRP,d.trp),reg=dayRegion(d);
+      if(ac.cost!=="zero"){nights++;if(d.date)nightDates.push(d.date);}
+      if(ac.cost==="night"){extraNights++;var _n=accNightRate(ac,reg);nightAdd+=_n;
+        if(ac.nightRate&&!_n)anyGap=true;}
+      /* Pilihan yang menanggung tolakan malamnya sendiri (contoh 'tanpa hotel')
+         tidak boleh dikira lagi oleh pelarasan malam automatik di bawah. */
+      if(ac.dropsNight)selfDrop++;
+      if(ml.l)mealsL++;
+      if(ml.d)mealsD++;
+      if(tp.cost!=="zero")transfers++;
+      if(tp.cost==="day"){
+        extraDayCount++;
+        var dr=dayRateFor(reg);if(dr.gap)anyGap=true;
+        /* kumpul ikut kawasan DAN kadar: satu baris per kawasan supaya quotation
+           menunjukkan hari mana ikut kadar mana (Nami 1,400 vs Seoul 1,200) */
+        if(dr.amt){var ek=reg+"|"+dr.amt;
+          extAgg[ek]=extAgg[ek]||{region:reg,amt:dr.amt,days:0};extAgg[ek].days++;}
+      }
+      [ac,ml,tp].forEach(function(o){
+        var a=optAmt(o,reg);if(a.gap)anyGap=true;
+        /* Kunci kumpulan mesti termasuk amaun: pilihan yang SAMA boleh beri kadar
+           berbeza ikut kawasan (contoh tolak driving guide -1,000 Seoul vs -1,200 Nami),
+           jadi kumpul ikut label+amaun supaya setiap kadar jadi baris sendiri. */
+        if(a.unitPax){var kp=optLine(o)+"|"+a.unitPax;
+          optPax[kp]=optPax[kp]||{label:optLine(o),unit:a.unitPax,days:0};optPax[kp].days++;}
+        if(a.unitVeh){var kv=optLine(o)+"|"+a.unitVeh;
+          optVeh[kv]=optVeh[kv]||{label:optLine(o),unit:a.unitVeh,days:0};optVeh[kv].days++;}
+      });
+    });
+    var peakNights=0,peakHit=null,peakPct=0,peakAmt=0,peakReq=null;
+    nightDates.forEach(function(ds){var w=inPeak(ds);if(!w)return;
+      peakNights++;var pv=winVal(w)||0;peakAmt+=pv;
+      if(winReq(w))peakReq=peakReq||w;
+      if(pv>peakPct){peakPct=pv;peakHit=w;}
+      peakHit=peakHit||w;});
+    /* tetingkap "request" jadi musim yang dilaporkan — itu yang menghalang quote */
+    if(peakReq)peakHit=peakReq;
+    var lead=dep?daysBetween(todayIso(),dep):null;
+    var lb=CFG.lateBooking||{lt:45,amount:0};
+    var lm=v.lastMinute||CFG.lastMinute;
+    var isLate=lb.amount>0&&lead!==null&&lead<lb.lt&&lead>=0;
+    var isLast=!!lm&&lead!==null&&lead<lm.lt&&lead>=0;
+    state.season={peakNights:peakNights,nightsDated:nightDates.length,lead:lead,
+                  isLate:isLate,isLast:isLast,noDate:!dep,window:peakHit};
+
+    /* Senarai pelarasan yang sudah dilipat ke harga per pax. Dua bahasa: `my`
+       untuk baris nota dalam KB, `en` untuk ringkasan quotation customer. */
+    var pp=0,sur=[];
+    /* `amt` = amaun per pax yang baris ini menyumbang. Ia dipakai untuk membina
+       breakdown itemised di bawah jadual ringkasan, supaya TC boleh audit harga
+       per pax baris demi baris. Baris tanpa amaun (nota sahaja) hantar null. */
+    function addSur(my,en,amt){sur.push({my:my,en:en,amt:(amt==null?null:amt)});}
+    state.seasonReq=null;
+    /* tier yang katalog tandakan "on request" - tiada harga tersiar untuk band ini */
+    state.tierReq=tierReqRow(tierRow(pay||v.tiers[0].from));
+    /* Baris surcaj hanya ditulis bila amaunnya BUKAN sifar. Sesetengah katalog
+       mengesahkan tarikh itu peak tetapi tidak mengenakan apa-apa pada pakej asas —
+       surcaj peaknya melekat pada akomodasi upgrade (contoh Semporna v4: base
+       Wingtat / Lato Lato tiada surcaj, upgrade sahaja yang ada). Menulis
+       "already includes: Peak season surcharge (RM 0 per pax)" dalam PDF customer
+       adalah salah; musim itu sendiri tetap dipapar oleh baris Season quotation
+       dan oleh baris nota KB, jadi tiada maklumat hilang. Config lain tidak
+       terjejas — setiap tetingkap peak mereka membawa nilai bukan sifar. */
+    if(peakNights){
+      var pk=PK();
+      if(pk.mode==="flat"){
+        /* satu amaun rata per pax untuk keseluruhan trip (contoh Maldives:
+           "Add on RM100 per person" untuk satu tetingkap tarikh travel) —
+           dikenakan sekali, guna kadar tertinggi antara tetingkap yang kena */
+        if(peakReq){
+          state.seasonReq=winLab(peakReq)||"Super Peak Season";
+        }else{
+          var flab=winLab(peakHit)||"Peak Season";
+          pp+=peakPct;
+          if(peakPct)addSur(flab+" +"+rm0(peakPct),flab+" surcharge ("+rm0(peakPct)+" per pax)",peakPct);
+        }
+      }else if(pk.mode==="percent"){
+        /* peratus dikenakan sekali sahaja - guna kadar tertinggi antara tetingkap yang kena */
+        var add=Math.round(t[0]*peakPct/100);
+        pp+=add;
+        if(add)addSur("Peak Season +"+peakPct+"% ("+rm0(add)+")",
+                       "Peak season surcharge "+peakPct+"% ("+rm0(add)+" per pax)",add);
+      }else{
+        pp+=peakAmt;
+        if(peakAmt)addSur("Peak Season "+peakNights+"/"+nights+" malam +"+rm0(peakAmt),
+               "Peak season surcharge, "+peakNights+" of "+nights+" nights ("+
+               rm0(peakAmt)+" per pax)",peakAmt);
+      }
+    }
+    (CFG.extraSurcharge||[]).forEach(function(x){
+      if(x.variants&&x.variants.indexOf(v.id)<0)return;
+      if(x.dateIn&&!(dep&&within(dep,x.dateIn)))return;
+      var amt=x.perPax||0;
+      if(x.percentOfTier)amt=Math.round(t[0]*x.percentOfTier/100);
+      if(amt){pp+=amt;addSur(x.label+" +"+rm0(amt),x.label+" ("+rm0(amt)+" per pax)",amt);}
+    });
+    /* lm.perGroup: sesetengah katalog caj last minute SEKALI satu booking
+       (contoh Maldives "2 pax: Additional RM300 per group"), bukan per pax.
+       Ia jadi baris sendiri dalam ringkasan, sama seperti late booking. */
+    if(isLast&&!lm.perGroup){var a=(pay<=2?lm.rate2:lm.rate3);pp+=a;
+      addSur("Last minute +"+rm0(a),"Last minute booking surcharge ("+rm0(a)+" per pax)",a);}
+    var mealAdd=mealsL*mr.lunch+mealsD*mr.dinner;
+    pp+=mealAdd;
+    if(mealAdd)addSur("Meal "+mealsL+" lunch + "+mealsD+" dinner "+sgn(mealAdd)+" per pax",
+                      mealsL+" lunch + "+mealsD+" dinner ("+sgn(mealAdd)+" per pax)",mealAdd);
+    /* Delta meal berbanding blok itinerary - tambah dan tolak ada kadar berbeza,
+       jadi ia dijumlah berasingan supaya breakdown menunjukkan kedua-duanya. */
+    if(CFG.mealDelta){
+      var mUp=0,mDn=0,mUpN=0,mDnN=0;
+      days.forEach(function(x){
+        var md=mealDeltaOf(x,find(presets(),x.preset),1);
+        if(!md)return;
+        if(md.meals>0){mUpN+=md.meals;mUp+=md.perPax;}else{mDnN+=-md.meals;mDn+=md.perPax;}
+      });
+      if(mUp){pp+=mUp;addSur("Tambah "+mUpN+" meal "+sgn(mUp)+" per pax",
+        mUpN+" additional meal"+(mUpN>1?"s":"")+" ("+sgn(mUp)+" per pax)",mUp);}
+      if(mDn){pp+=mDn;addSur("Tolak "+mDnN+" meal dari pakej "+sgn(mDn)+" per pax",
+        mDnN+" meal"+(mDnN>1?"s":"")+" removed from package ("+sgn(mDn)+" per pax)",mDn);}
+    }
+    /* ---- malam berbanding baseline pakej ----
+       ext.autoNights: delta dikira terus daripada itinerari yang dibina, jadi tambah
+       atau buang hari terus betul tanpa TC perlu tanda 'malam tambahan' sendiri.
+       Tanpa autoNights: kekal seperti dulu (extraNights daripada pilihan acc 'night'),
+       supaya config destinasi lain tidak berubah kelakuan. */
+    var base=v.nights||0,autoN=!!EX().autoNights;
+    /* autoNights: bilangan malam mesti datang daripada PANJANG PERJALANAN
+       (n hari = n-1 malam), bukan daripada bilangan hari yang pilihan acc-nya
+       berbayar. Kalau dikira dari pilihan acc, satu hari yang bawa acc "none"
+       (contoh salin hari checkout, atau blok hari berlepas diletak di tengah
+       trip) menghasilkan 9 hari / 7 malam — transport dicaj tetapi hotel tidak.
+       Malam yang TC buang dengan sengaja dikira melalui `selfDrop`. */
+    var tripN=autoN?Math.max(0,days.length-1-selfDrop):0;
+    var overN=autoN?Math.max(0,tripN-base):extraNights;
+    var shortN=autoN?Math.max(0,base-tripN)
+                    :Math.max(0,base-(nights-extraNights)-selfDrop);
+    /* autoNights guna satu kadar rata; model eksplisit jumlahkan kadar setiap
+       malam tambahan, sebab pilihan berbeza boleh ada kadar berbeza (3* vs 4*). */
+    var nightSum=autoN?(overN*nightRate()):nightAdd;
+    if(nightSum){
+      pp+=nightSum;
+      addSur("Malam tambahan "+overN+" "+sgn(nightSum)+" per pax",
+             overN+" additional night"+(overN>1?"s":"")+" ("+sgn(nightSum)+" per pax)",nightSum);
+    }
+    if(shortN){var srt=rateAmt("nightShort","");
+      if(srt){pp+=shortN*srt;
+        addSur("Buang "+shortN+" malam pakej "+sgn(shortN*srt),
+               shortN+" package night"+(shortN>1?"s":"")+" removed ("+sgn(shortN*srt)+" per pax)",
+               shortN*srt);}}
+    state.overNights=overN;state.shortNights=shortN;
+    state.tripNights=autoN?tripN:null;state.accNights=nights;state.selfDrop=selfDrop;
+    Object.keys(optPax).forEach(function(k){
+      var o=optPax[k],amt=o.unit*o.days;
+      pp+=amt;
+      addSur(o.label+" "+sgn(amt)+(o.days>1?" ("+o.days+" hari)":""),
+             o.label+(o.days>1?" x "+o.days+" days":"")+" ("+sgn(amt)+" per pax)",amt);
+    });
+    var em=EX().marginPerPax||0;
+    if((overN||extraDayCount)&&em){pp+=em;
+      addSur("Margin extension "+sgn(em)+" per pax",
+             "Extension margin ("+sgn(em)+" per pax)",em);}
+
+    /* ext.shareVehicle: kos per kenderaan ialah kos yang DIKONGSI satu group, jadi ia
+       dibahagi dengan bilangan pax berbayar dan dilipat ke harga per pax, bukan berdiri
+       sebagai baris sendiri. Tanpa flag ini kelakuan kekal seperti dulu (baris asing),
+       supaya config destinasi sedia ada tidak berubah. */
+    var veh=vehicles(),shareVeh=!!EX().shareVehicle,shareTot=0,shareAddon=0;
+    /* Add-on dengan elemen ke-4 "share" ialah kos satu kenderaan / satu group,
+       jadi ia dikongsi sama rata antara pax berbayar, bukan didarab dengan pax. */
+    var agg={};
+    days.forEach(function(d){d.addons.forEach(function(a){
+      if(!a.i)return;var q=ADDONS[a.i];
+      if(q[3]==="share"){shareAddon+=a.qa*q[1]+a.qc*(q[2]||0);return;}
+      if(a.qa){var k1=q[0]+" (adult)";agg[k1]=agg[k1]||{u:q[1],q:0};agg[k1].q+=a.qa;}
+      if(a.qc&&q[2]){var k2=q[0]+" (child)";agg[k2]=agg[k2]||{u:q[2],q:0};agg[k2].q+=a.qc;}
+    });});
+    /* Kos dikongsi diitemise: satu baris per kawasan / per pilihan, bukan satu
+       lump "Kos dikongsi". Sebabnya bila kos per kenderaan diprorate ke harga per
+       pax, ia hilang daripada jadual baris — jadi atribusi segmen ("hari mana ikut
+       kadar mana") mesti hidup dalam breakdown, kalau tidak TC tidak dapat mengaudit
+       harga akhir. Jumlahnya sama sahaja; hanya pecahannya kelihatan. */
+    function addShare(label,line,tot){
+      if(!tot||!pay)return;
+      shareTot+=tot;pp+=tot/pay;
+      /* Jumlah kumpulan diletak DALAM label supaya ia kekal selepas amaun per pax
+         dipotong untuk lajur kanan breakdown - TC nampak RM12,300 / 9 pax, bukan
+         hanya hasil bahaginya. */
+      addSur(label.replace(/\)$/,", "+rm0(tot)+" / "+pay+" pax)")+" "+sgn(tot/pay)+" per pax",
+             line+" ("+sgn(tot)+" / "+pay+" pax = "+sgn(tot/pay)+" per pax)",tot/pay);
+    }
+    if(shareVeh){
+      Object.keys(extAgg).sort(function(a,b){return extAgg[b].amt-extAgg[a].amt;})
+        .forEach(function(k){var x=extAgg[k];
+          var d1=x.days+(x.days>1?" hari":" hari"),v1=veh+(veh>1?" kenderaan":" kenderaan");
+          addShare("Transport"+(x.region?" "+x.region:"")+" ("+d1+" x "+v1+")",
+                   "Transport extension"+(x.region?" "+x.region:"")+" ("+x.days+
+                     (x.days>1?" days":" day")+" x "+veh+(veh>1?" vehicles":" vehicle")+")",
+                   x.days*veh*x.amt);});
+      Object.keys(optVeh).forEach(function(k){var o=optVeh[k];
+        addShare(o.label+" ("+o.days+" hari x "+veh+" kenderaan)",
+                 o.label+" ("+o.days+(o.days>1?" days":" day")+")",
+                 o.days*veh*o.unit);});
+    }
+    /* add-on asas "share" (kos per transport/per group) dikumpul di atas */
+    if(shareAddon&&pay){
+      pp+=shareAddon/pay;shareTot+=shareAddon;
+      addSur("Add-on dikongsi "+sgn(shareAddon)+" / "+pay+" pax = "+sgn(shareAddon/pay)+" per pax",
+             "Shared add-on "+sgn(shareAddon)+" / "+pay+" pax ("+sgn(shareAddon/pay)+" per pax)",
+             shareAddon/pay);
+    }
+
+    var lines=[];
+    if(ad)lines.push({k:"Adult (Twin Share)",q:ad,u:t[0]+pp});
+    if(cwb)lines.push({k:v.labelCwb||"Child With Bed",q:cwb,u:t[1]+pp});
+    if(cnb)lines.push({k:v.labelCnb||"Child No Bed",q:cnb,u:t[2]+pp});
+    if(inf&&v.infant)lines.push({k:"Infant (below 2 years)",q:inf,u:v.infant});
+    var sg=n("c_single");
+    /* single supplement boleh flat per pax (single) atau ikut malam (singlePerNight),
+       contoh Hokkaido RM 300 semalam - ia terus melaras bila malam ditambah/dibuang */
+    var sgRate=v.singlePerNight?(v.singlePerNight*nights):(v.single||0);
+    if(sg&&sgRate)lines.push({k:"Single supplement",q:sg,u:sgRate});
+    if(isLate)lines.push({k:"Late booking (less than "+lb.lt+" days)",q:1,u:lb.amount});
+    if(isLast&&lm.perGroup)lines.push({k:"Last minute booking (less than "+lm.lt+
+      " days)",q:1,u:(pay<=2?lm.rate2:lm.rate3)});
+    /* Hari extension dikumpul ikut kadar — satu baris kalau semua kawasan sama kadar,
+       berpecah kalau berbeza (contoh Seoul RM1,200 vs outskirt Nami RM1,400). */
+    if(!shareVeh){
+      Object.keys(extAgg).sort(function(a,b){return extAgg[b].amt-extAgg[a].amt;}).forEach(function(k){
+        var x=extAgg[k];
+        lines.push({k:"Transport extension"+(x.region?" "+x.region:"")+" ("+x.days+
+          (x.days>1?" days":" day")+" x "+veh+(veh>1?" vehicles":" vehicle")+")",
+          q:x.days*veh,u:x.amt});
+      });
+      Object.keys(optVeh).forEach(function(k){
+        var o=optVeh[k];
+        lines.push({k:o.label+" ("+o.days+(o.days>1?" days":" day")+")",q:o.days*veh,u:o.unit});
+      });
+    }
+
+    Object.keys(agg).forEach(function(k){lines.push({k:k,q:agg[k].q,u:agg[k].u});});
+
+    var grand=0;lines.forEach(function(l){grand+=l.q*l.u;});
+    /* Prorata: kos yang BUKAN per-pax (transport per kenderaan, optional activity,
+       single supplement, infant, late booking) dibahagi bilangan pax berbayar,
+       supaya harga per pax yang dipapar ialah harga final sebenar. */
+    var paxRowKeys=["Adult (Twin Share)",v.labelCwb||"Child With Bed",v.labelCnb||"Child No Bed"];
+    var paxRowTotal=0;
+    lines.forEach(function(l){if(paxRowKeys.indexOf(l.k)>=0)paxRowTotal+=l.q*l.u;});
+    state.otherTotal=grand-paxRowTotal;
+    state.otherPerPax=pay?(state.otherTotal/pay):0;
+    state.finalPerPax=pay?(grand/pay):0;
+    state.lines=lines;state.grand=grand;state.pay=pay;state.tier=t;state.pp=pp;state.sur=sur;
+    state.nights=nights;state.days=days.length;state.mealsL=mealsL;state.mealsD=mealsD;
+    state.transfers=transfers;state.extraNights=extraNights;state.extraDays=extraDayCount;
+    state.nightAdd=nightAdd;
+    state.guided=guidedOf(days);state.guidedBase=guidedBase();
+    state.gap=anyGap;
+    /* Bilangan hari yang masih pada placeholder mustPick - kosnya belum ditetapkan. */
+    state.mustPick=days.filter(function(d){
+      var pr=find(presets(),d.preset);return pr&&pr.mustPick;}).length;
+    state.paxNotes=(CFG.paxNotes||[]).filter(function(x){
+      return pay>=(x.from||0)&&pay<=(x.to||99999);}).map(function(x){return x.text;});
+    return{lines:lines,grand:grand,pay:pay,ad:ad};
+  }
+
+  function psum(id,txt){var e=$c(id+"_s");if(e)e.textContent=txt;}
+  function renderPanel(){
+    var extra=0;days.forEach(function(d,i){extra+=dayCost(d,i);});
+    var v=V();
+    var std=days.length===v.itin.length&&extra===0&&days.every(function(d,i){
+      return d.preset===("d"+(i+1))||d.preset===(v.itin[i]&&v.itin[i].v);});
+    psum("p_itin",std?(v.days+"H"+v.nights+"M standard"):
+      (days.length+" hari · "+state.nights+" malam"+(extra?" · "+sgn(extra):"")));
+    var g=state.guided||{},gb=state.guidedBase||{};
+    var gtxt=gb.total?(" · berpandu <b"+(g.free!==gb.free?" style='color:#b3261e'":"")+">"+
+      g.free+"/"+gb.free+"</b> dalam pakej"+(g.paid?" + "+g.paid+" tambahan":"")):"";
+    $c("c_bar").innerHTML="<b>"+days.length+" hari</b> · "+state.nights+" malam"+gtxt+" · "+
+      (state.mealsL+state.mealsD)+" meal · pelarasan <b>"+
+      (extra?sgn(extra):rm0(0))+"</b>";
+  }
+
+  function render(keepDays){
+    var r=compute();
+    if(!keepDays)renderDays();
+    var s=state.season||{},v=V(),note;
+    if(!r.pay)note="Isi bilangan pax untuk lihat tier katalog.";
+    else{
+      note="Tier katalog <b>"+tierLabel(r.pay)+"</b> · asas adult <b>"+rm(state.tier[0])+"</b> per pax";
+      /* Pelarasan yang tidak bergantung tarikh (malam tambahan, tolak dari katalog,
+         upgrade hotel) mesti kelihatan walaupun departure date belum diisi — dulu
+         seluruh senarai tersembunyi sampai tarikh dimasukkan. */
+      if(s.noDate){
+        if(state.sur.length)note+=" · pelarasan: "+state.sur.map(function(x){return x.my;}).join(", ");
+        note+=" · harga per pax <b>"+rm(state.tier[0]+state.pp)+"</b>";
+        note+=" · isi <b>departure date</b> untuk kesan peak season.";
+      }else{
+        note+=" · "+(s.peakNights?("<b>"+((s.window&&s.window[4])||"Peak Season")+"</b>")
+                                 :"<b>Normal Season</b>");
+        if(state.sur.length)note+=" · surcharge: "+state.sur.map(function(x){return x.my;}).join(", ");
+        if(s.isLate)note+=", late booking +"+rm0((CFG.lateBooking||{}).amount||0)+" satu booking";
+        var _lm=v.lastMinute||CFG.lastMinute;
+        if(s.isLast&&_lm&&_lm.perGroup)note+=", last minute +"+
+          rm0(r.pay<=2?_lm.rate2:_lm.rate3)+" satu booking";
+        note+=" · harga per pax <b>"+rm(state.tier[0]+state.pp)+"</b>";
+      }
+      if(overMax(r.pay))note+=" · melebihi "+maxPax()+" pax (tier tertinggi katalog), sahkan kadar dengan operator.";
+      /* Bila bilangan hari berpandu tidak sama dengan pakej, beritahu TC dengan tepat.
+         Enjin tidak caj sendiri — TC yang tandakan hari mana tambahan / mana ditolak. */
+      var g=state.guided||{},gb=state.guidedBase||{};
+      if(g.free>gb.free)
+        note+=" &middot; <b>perhatian:</b> "+g.free+" hari berpandu ditanda <i>termasuk pakej</i> "+
+              "tetapi pakej hanya ada "+gb.free+" &mdash; tukar hari lebihan kepada "+
+              "<i>hari tambahan</i> supaya kosnya masuk.";
+      else if(g.free<gb.free)
+        note+=" &middot; <b>perhatian:</b> hanya "+g.free+" hari berpandu berbanding "+gb.free+
+              " dalam pakej &mdash; guna pilihan <i>tolak driving guide</i> kalau nak tolak dari katalog.";
+      (state.paxNotes||[]).forEach(function(x){note+=" &middot; "+x;});
+      if(state.mustPick)note+=" &middot; <b>amaran:</b> "+state.mustPick+" hari masih belum "+
+        "dipilih bloknya &mdash; kos transport hari itu <b>belum ditetapkan</b>. Pilih satu blok "+
+        "segmen rate card (Day Tour / Pemanduan Antara Bandar / Transfer) sebelum quote.";
+      if(state.gap)note+=" &middot; <b>amaran:</b> ada hari yang kadarnya tiada dalam sumber &mdash; sahkan dengan operator sebelum quote.";
+      if(state.tierReq)note+=" &middot; <b>amaran:</b> katalog tulis <i>on request</i> untuk "+
+        "band "+tierLabel(r.pay)+" &mdash; <b>tiada harga tersiar</b>, jadi harga pakej dikira "+
+        "sebagai 0. Dapatkan sebut harga daripada operator sebelum quote.";
+      if(state.seasonReq)note+=" &middot; <b>amaran:</b> "+state.seasonReq+" &mdash; katalog tulis "+
+        "<i>price upon request</i> untuk tarikh ini, jadi tiada surcaj musim dikira. Dapatkan "+
+        "sebut harga daripada operator sebelum quote.";
+    }
+    $c("c_tier").innerHTML=note;
+    var tb=$c("c_lines");
+    tb.innerHTML=r.lines.length?r.lines.map(function(l){
+      return "<tr><td class='it'>"+esc2(l.k)+"</td><td>"+l.q+"</td><td>"+rm(l.u)+"</td><td class='add'>"+rm(l.q*l.u)+"</td></tr>";
+    }).join(""):"<tr><td colspan='4' style='color:var(--muted)'>Isi bilangan pax untuk mula.</td></tr>";
+    /* ---- breakdown itemised harga per pax ----
+       Setiap pelarasan yang dilipat ke harga per pax dipapar sebagai barisnya
+       sendiri, bermula dari tier katalog dan berakhir pada harga per pax akhir.
+       Kos per kenderaan / per group (transport, guide) sudah diprorate ikut pax
+       bila `ext.shareVehicle` dihidupkan, jadi jumlah bawah = harga sebenar
+       seorang adult. Tujuannya supaya TC boleh audit angka itu baris demi baris
+       tanpa mengira sendiri. */
+    var ie=$c("c_incl");
+    if(!ie){
+      var tbl=tb.closest("table");
+      if(tbl){ie=document.createElement("div");ie.id="c_incl";ie.className="calcincl";
+        tbl.parentNode.insertBefore(ie,tbl.nextSibling);}
+    }
+    if(ie){
+      var sr=(state.sur||[]);
+      if(!r.pay||!state.tier){ie.innerHTML="";ie.style.display="none";}
+      else{
+        var brk="<table class='calcbrk'><tbody>";
+        brk+="<tr><td class='it'>Harga katalog "+esc2(tierLabel(r.pay))+
+             " (adult)</td><td class='add'>"+rm(state.tier[0])+"</td></tr>";
+        var noted=[];
+        sr.forEach(function(x){
+          if(x.amt==null){noted.push(x.my);return;}
+          brk+="<tr><td class='it'>"+esc2(x.my.replace(/\s*(?:[-+]\s*RM|\(RM)\s*[\d,.].*$/,"").trim()||x.my)+
+               "</td><td class='add"+(x.amt<0?" dded":"")+"'>"+sgn(x.amt)+"</td></tr>";
+        });
+        brk+="<tr class='brks'><td class='it'>Harga pakej per pax (adult)</td>"+
+             "<td class='add'>"+rm(state.tier[0]+state.pp)+"</td></tr>";
+        /* Kos bukan per-pax diprorate supaya angka akhir benar-benar per orang. */
+        if(Math.abs(state.otherTotal)>0.005){
+          brk+="<tr><td class='it'>Kos bukan per-pax (transport, optional activity, "+
+               "single, infant, late booking)<br><span class='brkn'>"+
+               sgn(state.otherTotal)+" &divide; "+r.pay+" pax berbayar</span></td>"+
+               "<td class='add"+(state.otherPerPax<0?" dded":"")+"'>"+
+               sgn(state.otherPerPax)+"</td></tr>";
+        }
+        brk+="<tr class='brkt'><td class='it'><b>Harga final per pax</b>"+
+             (r.ad&&(n("c_cwb")||n("c_cnb"))?"<br><span class='brkn'>purata semua pax "+
+              "berbayar &mdash; adult, CWB dan CNB ada harga katalog berbeza</span>":"")+
+             "</td><td class='add'><b>"+rm(state.finalPerPax)+"</b></td></tr>";
+        brk+="</tbody></table>";
+        var extra=[];
+        extra.push("Semua kos di atas sudah masuk dalam <b>harga final per pax</b>. "+
+          (EX().shareVehicle
+            ?("Kos per kenderaan (transport, guide) sudah dibahagi "+r.pay+
+              " pax berbayar dan dilipat ke harga per pax, jadi ia tidak muncul "+
+              "sebagai baris berasingan dalam jadual ringkasan.")
+            :("Baris dalam jadual ringkasan kekal ikut format quotation ARBA "+
+              "(adult / CWB / CNB pada harga katalog, kos per kenderaan sebagai "+
+              "baris sendiri).")));
+        if(state.season&&state.season.isLate)extra.push("Late booking dicaj "+
+          "<b>sekali satu booking</b> &mdash; dalam harga final ia dibahagi antara pax.");
+        ie.innerHTML="<p class='brkh'><b>Breakdown harga per pax</b></p>"+brk+
+          (noted.length?"<p class='brkn'>"+noted.map(esc2).join(" &middot; ")+"</p>":"")+
+          (extra.length?"<p class='brkn'>"+extra.join(" &middot; ")+"</p>":"");
+        ie.style.display="";
+      }
+    }
+    $c("c_grand").textContent=rm(r.grand);
+    /* Tile ini dulu hanya mengulang harga baris adult, jadi ia tidak mengira
+       add-on dan kos per kenderaan. Sekarang ia harga final selepas semuanya. */
+    $c("c_perpax").textContent=rm(state.finalPerPax||0);
+    $c("c_dep_amt").textContent=rm(DEPO()*r.pay);
+    renderPanel();
+  }
+
+  /* ---------- events ---------- */
+  function dayIdx(el){var d=el.closest("details.dayc");return d?parseInt(d.dataset.i,10):-1;}
+  function syncOpen(){blk.querySelectorAll("details.dayc").forEach(function(dc){
+    var i=parseInt(dc.dataset.i,10);if(days[i])days[i].open=dc.open;});}
+  function moveDay(from,to){
+    if(from===to||from<0||to<0||from>=days.length||to>=days.length)return;
+    var m=days.splice(from,1)[0];days.splice(to,0,m);autoDates();render();
+  }
+
+  $c("c_days").addEventListener("change",function(e){
+    var i=dayIdx(e.target);if(i<0)return;var d=days[i],cl=e.target.classList;
+    syncOpen();
+    if(cl.contains("d-preset")){
+      var pr=find(presets(),e.target.value);
+      applyPreset(d,pr);
+      if(pr.v!=="cus")d.custom="";
+      render();return;
+    }
+    if(cl.contains("d-acc"))d.acc=e.target.value;
+    else if(cl.contains("d-meal"))d.meal=e.target.value;
+    else if(cl.contains("d-trp"))d.trp=e.target.value;
+    else if(cl.contains("d-ai")){
+      var ai=parseInt(e.target.closest(".aorow").dataset.ai,10);
+      var a=d.addons[ai],pick=parseInt(e.target.value,10);
+      a.i=pick;
+      if(pick){a.auto=true;autoQty(a);}
+      else{a.qa=0;a.qc=0;a.auto=false;}
+    }
+    render();
+  });
+  $c("c_days").addEventListener("input",function(e){
+    var i=dayIdx(e.target);if(i<0)return;var d=days[i],cl=e.target.classList;
+    if(cl.contains("d-custom")){d.custom=e.target.value;
+      var dn=e.target.closest("details.dayc").querySelector(".dname");
+      if(dn)dn.textContent=e.target.value||"Custom";return;}
+    if(cl.contains("d-aqa")||cl.contains("d-aqc")){
+      var row=e.target.closest(".aorow"),ai=parseInt(row.dataset.ai,10);
+      /* TC taip sendiri -> berhenti auto, nombor TC yang menang selepas ini */
+      d.addons[ai].auto=false;
+      d.addons[ai][cl.contains("d-aqa")?"qa":"qc"]=parseFloat(e.target.value)||0;
+      var a=d.addons[ai],q=ADDONS[a.i];
+      row.querySelector(".aosum").innerHTML=a.i?rm0(a.qa*q[1]+a.qc*q[2]):"&mdash;";
+      var cost=dayCost(d),chip=e.target.closest("details.dayc").querySelector(".dchip.dcost");
+      if(chip){chip.textContent=cost?"+"+rm0(cost):"Termasuk";chip.classList.toggle("on",!!cost);}
+      render(true);
+    }
+  });
+  $c("c_days").addEventListener("click",function(e){
+    var btn=e.target.closest("button");if(!btn)return;
+    var i=dayIdx(btn);if(i<0)return;
+    e.preventDefault();e.stopPropagation();syncOpen();
+    if(btn.classList.contains("d-up")){moveDay(i,i-1);return;}
+    if(btn.classList.contains("d-down")){moveDay(i,i+1);return;}
+    if(btn.classList.contains("d-del")){if(days.length>2){days.splice(i,1);autoDates();syncReturn();}}
+    else if(btn.classList.contains("d-dup")){
+      var cp=JSON.parse(JSON.stringify(days[i]));
+      cp.ext=true;applyPreset(cp,find(presets(),cp.preset));
+      days.splice(i+1,0,cp);autoDates();syncReturn();}
+    else if(btn.classList.contains("d-aoadd")){days[i].addons.push({i:0,qa:0,qc:0,auto:false});days[i].open=true;}
+    else if(btn.classList.contains("d-aodel")){
+      var ai=parseInt(btn.closest(".aorow").dataset.ai,10);
+      days[i].addons.splice(ai,1);
+      if(!days[i].addons.length)days[i].addons.push({i:0,qa:0,qc:0,auto:false});
+      days[i].open=true;}
+    else return;
+    render();
+  });
+  $c("c_days").addEventListener("dragstart",function(e){
+    var dc=e.target.closest("details.dayc");if(!dc)return;
+    dragFrom=parseInt(dc.dataset.i,10);dc.classList.add("dragging");
+    if(e.dataTransfer){e.dataTransfer.effectAllowed="move";
+      try{e.dataTransfer.setData("text/plain",String(dragFrom));}catch(x){}}
+  });
+  $c("c_days").addEventListener("dragover",function(e){
+    if(dragFrom===null)return;
+    e.preventDefault();if(e.dataTransfer)e.dataTransfer.dropEffect="move";
+    var dc=e.target.closest("details.dayc");
+    blk.querySelectorAll(".dayc").forEach(function(x){x.classList.remove("dropto");});
+    if(dc&&parseInt(dc.dataset.i,10)!==dragFrom)dc.classList.add("dropto");
+  });
+  $c("c_days").addEventListener("drop",function(e){
+    if(dragFrom===null)return;
+    e.preventDefault();
+    var dc=e.target.closest("details.dayc"),to=dc?parseInt(dc.dataset.i,10):-1,from=dragFrom;
+    dragFrom=null;syncOpen();
+    if(to>=0)moveDay(from,to);else render();
+  });
+  $c("c_days").addEventListener("dragend",function(){
+    dragFrom=null;
+    blk.querySelectorAll(".dayc").forEach(function(x){x.classList.remove("dragging","dropto");});
+  });
+
+  $c("c_addday").addEventListener("click",function(){
+    syncOpen();var d=mkDay("ext",true);d.open=true;
+    days.splice(Math.max(1,lastIdx()),0,d);autoDates();syncReturn();render();
+  });
+  $c("c_reload").addEventListener("click",function(){loadDefault();autoDates();syncReturn();render();});
+  $c("c_expand").addEventListener("click",function(){
+    var anyClosed=days.some(function(d){return !d.open;});
+    days.forEach(function(d){d.open=anyClosed;});
+    this.textContent=anyClosed?"Tutup semua":"Buka semua";render();
+  });
+  if($c("c_pkg"))$c("c_pkg").addEventListener("change",function(){
+    vi=parseInt(this.value,10)||0;loadDefault();autoDates();syncReturn();render();
+  });
+  blk.addEventListener("input",function(e){
+    if(e.target.closest("#c_days"))return;
+    if(e.target.id==="c_dep"){autoDates();syncReturn();render();return;}
+    if(e.target.id==="c_ret"){syncDaysToDates();render();return;}
+    syncOpen();render();
+  });
+  blk.addEventListener("change",function(e){
+    if(e.target.closest("#c_days")||e.target.id==="c_pkg")return;
+    if(e.target.id==="c_dep"){autoDates();syncReturn();render();return;}
+    if(e.target.id==="c_ret"){syncDaysToDates();render();return;}
+    syncOpen();render();
+  });
+
+
+  /* ---------- dokumen quotation (halaman baharu, format rasmi ARBA) ---------- */
+  var QCSS=
+  "*{box-sizing:border-box}"+
+  "body{margin:0;background:#f0f0f0;font-family:Arial,Helvetica,sans-serif;color:#000;font-size:11px;line-height:1.35}"+
+  ".bar{position:sticky;top:0;z-index:9;display:flex;gap:10px;align-items:center;flex-wrap:wrap;"+
+  "background:#fff;border-bottom:1px solid #ddd;padding:11px 16px;font-size:12.5px}"+
+  ".bar .msg{margin-right:auto}.bar b{color:#BE1E2D}"+
+  ".bar button{font:inherit;font-size:12.5px;font-weight:700;border:none;border-radius:999px;"+
+  "padding:8px 17px;background:#BE1E2D;color:#fff;cursor:pointer}"+
+  ".bar button:hover{background:#d82637}"+
+  ".bar button.alt{background:#fff;color:#222;border:1px solid #ccc}"+
+  ".bar button.alt:hover{background:#f4f4f4}"+
+  ".page{max-width:794px;margin:18px auto 40px;background:#fff;padding:34px 38px 44px;"+
+  "box-shadow:0 2px 14px rgba(0,0,0,.12)}"+
+  ".qhead{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}"+
+  ".qhead h1{margin:0;font-size:29px;font-weight:700;letter-spacing:.3px}"+
+  ".qhead .co{font-size:11px;font-weight:700;margin-top:1px}"+
+  ".qhead img{width:152px;height:auto;flex:0 0 auto;margin-top:5px}"+
+  ".dt{margin:26px 0 7px;font-size:11px}"+
+  "h2{color:#BE1E2D;font-size:14px;font-weight:700;margin:18px 0 5px;letter-spacing:.2px}"+
+  "table{width:100%;border-collapse:collapse;font-size:10.5px;margin:0}"+
+  "th,td{border:1px solid #c9c9c9;padding:5px 8px;vertical-align:middle}"+
+  "th{background:#EDEDED;font-weight:700;text-align:center}"+
+  ".info th{text-align:left;width:33%;text-transform:uppercase}"+
+  ".items{margin-top:10px}.items td.c{text-align:center}.items td.r{text-align:right}"+
+  ".items tr.gt td{border:none;font-weight:700;text-align:right;padding:7px 8px 0}"+
+  ".items tr.dep td{border:none;text-align:right;padding:2px 8px 0}"+
+  ".sechr{border-top:1px solid #d8d8d8;margin-top:10px}"+
+  ".itin td.day{text-align:center;font-weight:700;width:11%;white-space:nowrap}"+
+  ".itin td.c{text-align:center}.itin .ttl{display:block;font-weight:700;margin-bottom:2px}"+
+  ".itin ul{margin:0;padding:0;list-style:none}"+
+  ".itin li{position:relative;padding-left:10px}.itin li:before{content:'-';position:absolute;left:0}"+
+  ".cols{display:flex;gap:28px;margin-top:5px}.cols>div{flex:1}"+
+  ".cols h3{font-size:11px;font-weight:700;margin:0 0 4px}"+
+  ".cols ul{margin:0;padding-left:10px;list-style:none}"+
+  ".cols li{position:relative;padding-left:10px;margin-bottom:2px}"+
+  ".cols li:before{content:'\\2022';position:absolute;left:0}"+
+  ".incl{margin:7px 0 0;font-size:10px;line-height:1.4;color:#333}"+
+  ".val{margin-top:18px;font-size:10.5px;line-height:1.45}"+
+  "@page{size:A4;margin:14mm}"+
+  "@media print{body{background:#fff}.bar{display:none}"+
+  ".page{max-width:none;margin:0;padding:0;box-shadow:none}"+
+  "thead{display:table-header-group}tr{page-break-inside:avoid}h2{page-break-after:avoid}}";
+
+  /* Label Accommodation untuk PDF. Pilihan boleh bawa `hotel` sendiri (contoh
+     upgrade 4 bintang, menginap ski resort); pilihan tanpa malam sentiasa "-".
+     Tanpa medan itu, hotelLabel varian digunakan seperti sebelum ini. */
+  function accLabel(ac,v){
+    if(ac.hotel)return ac.hotel;
+    if(ac.cost==="zero")return "-";
+    return v.hotelLabel||"Hotel";
+  }
+  /* Baris inclusions yang bergantung pada itinerary yang DIBINA, bukan teks statik.
+     Setiap pilihan acc/trp boleh bawa templat `incl` dengan penanda "{days}";
+     hari yang guna pilihan sama dikumpulkan jadi satu baris. */
+  function autoInclusions(){
+    var byTpl={},order=[];
+    days.forEach(function(dd,i){
+      [find(ACC,dd.acc),find(TRP,dd.trp)].forEach(function(o){
+        if(!o||!o.incl)return;
+        if(!byTpl[o.incl]){byTpl[o.incl]=[];order.push(o.incl);}
+        byTpl[o.incl].push(i+1);
+      });
+    });
+    return order.map(function(tpl){
+      var ds=byTpl[tpl];
+      var lbl=ds.length===days.length?"daily"
+             :("Day "+ds.join(", Day ").replace(/,([^,]*)$/," &"+"$1"));
+      return tpl.replace("{days}",lbl).replace("{n}",ds.length);
+    });
+  }
+
+  function quotationBody(){
+    var v=V(),today=new Date();
+    var dep=$c("c_dep").value,ret=$c("c_ret").value,travel="To be confirmed";
+    if(dep){
+      var a=parseIso(dep);
+      if(ret){var b2=parseIso(ret);
+        travel=(a.getMonth()===b2.getMonth()&&a.getFullYear()===b2.getFullYear())
+          ?(a.getDate()+" - "+elong(b2)):(elong(a)+" - "+elong(b2));
+      }else travel=elong(a);
+    }
+    var s=state.season||{};
+    var pkg=(v.pkgLabel||v.name)+" "+state.days+"D"+state.nights+"N";
+
+    var rows=state.lines.map(function(l){
+      return "<tr><td>"+esc2(l.k)+"</td><td class='c'>"+l.q+"</td><td class='r'>"+
+        rm(l.u).replace(CUR+" ","")+"</td><td class='r'>"+rm(l.q*l.u).replace(CUR+" ","")+"</td></tr>";
+    }).join("");
+
+    /* Add-on bernilai NEGATIF ialah tolakan dari harga katalog, bukan aktiviti
+       tambahan. Menyenaraikannya sebagai "(optional activity)" menulis benda yang
+       sudah DITOLAK sebagai benda yang DITAMBAH - maksudnya terbalik dalam PDF
+       customer. Jadi ia dikeluarkan dari senarai aktiviti; dan kalau add-on itu
+       membawa frasa Inggeris pada elemen ke-5, frasa itu dipakai untuk (a) nota
+       hari "excluded at customer request", (b) membuang baris inclusions yang
+       masih menjanjikannya, dan (c) satu baris exclusions. Config tanpa elemen
+       ke-5 hanya dapat (a) tanpa nota - tiada teks bocor. */
+    var aoDrop=[];
+    var itin=days.map(function(d,i){
+      var pr=find(presets(),d.preset);
+      var nm=d.preset==="cus"?(d.custom||"CUSTOM"):(pr.en||pr.t);
+      var acts=(pr.eact&&pr.eact.length)?pr.eact:["Itinerary as requested by customer"];
+      var ac=find(ACC,d.acc),ml=mealOf(d.meal),tp=find(TRP,d.trp);
+      var ao=[],aoNote=[];
+      d.addons.forEach(function(a){
+        if(!a.i||!(a.qa||a.qc))return;
+        var q=ADDONS[a.i];
+        if(a.qa*q[1]+a.qc*(q[2]||0)<0){
+          if(q[4]){
+            if(aoDrop.indexOf(q[4])<0)aoDrop.push(q[4]);
+            aoNote.push(q[4]+" - excluded at customer request");
+          }
+          return;
+        }
+        ao.push(q[0]);
+      });
+      var list=acts.concat(aoNote,ao.map(function(x){return x+" (optional activity)";}));
+      var dt=d.date?eshort(parseIso(d.date)):"";
+      return "<tr><td class='day'>Day "+(i+1)+(dt?"<br>"+dt:"")+"</td>"+
+        "<td><span class='ttl'>"+esc2(nm.toUpperCase())+"</span><ul>"+
+        list.map(function(x){return "<li>"+esc2(x)+"</li>";}).join("")+"</ul></td>"+
+        "<td class='c'>"+tp.lbl+"</td><td class='c'>"+ml.lbl.split(", ").join("<br>")+"</td>"+
+        "<td class='c'>"+accLabel(ac,v)+"</td></tr>";
+    }).join("");
+
+    /* "{auto}" dalam inclusions ialah tempat baris yang dijana disisipkan.
+       Kalau penanda itu tiada, baris dijana ditambah di hujung supaya config lama
+       tetap mendapat maklumat itu, bukan kehilangannya. */
+    var auto=autoInclusions(),inc=[],usedAuto=false;
+    (v.inclusions||[]).forEach(function(x){
+      if(x==="{auto}"){auto.forEach(function(a){inc.push(a);});usedAuto=true;return;}
+      inc.push(x.replace("{nights}",state.nights).replace("{days}",state.days));
+    });
+    if(!usedAuto)auto.forEach(function(a){inc.push(a);});
+    if(state.mealsL)inc.push(state.mealsL+" lunch"+(state.mealsL>1?"es":""));
+    if(state.mealsD)inc.push(state.mealsD+" dinner"+(state.mealsD>1?"s":""));
+    /* Tiket yang sudah DITOLAK dari harga tidak boleh kekal dalam inclusions —
+       itulah cara senarai statik jadi basi dan menjanjikan benda yang customer
+       tidak bayar. Padanan ikut frasa Inggeris add-on itu, jadi satu baris
+       inclusions per tiket akan dibuang tepat pada tiket yang ditolak. */
+    if(aoDrop.length)inc=inc.filter(function(x){
+      var s=String(x).toLowerCase();
+      for(var i=0;i<aoDrop.length;i++)if(s.indexOf(aoDrop[i].toLowerCase())>=0)return false;
+      return true;
+    });
+    var exc=(v.exclusions||[]).slice();
+    if(!state.mealsL)exc.push("Lunch");
+    if(!state.mealsD)exc.push("Dinner");
+    (v.exclusionsTail||[]).forEach(function(x){exc.push(x);});
+    aoDrop.forEach(function(x){exc.push(x+" - removed from the package at customer request");});
+    /* Buang exclusion yang bercanggah dengan apa yang sekarang TERMASUK — contoh
+       "Domestic Flight" tidak boleh kekal bila flight pindah bandar dicaj. */
+    var incLow=inc.join(" | ").toLowerCase();
+    exc=exc.filter(function(x){
+      var k=String(x).toLowerCase().trim();
+      if(k.length<6)return true;
+      return incLow.indexOf(k)<0;
+    });
+    function li(a){return a.map(function(x){return "<li>"+esc2(x)+"</li>";}).join("");}
+
+    var nm2=$c("c_name").value.trim();
+    return ""+
+    "<div class='qhead'><div><h1>QUOTATION</h1>"+
+    "<div class='co'>ARBA TRAVEL &amp; TOURS SDN BHD</div></div>"+
+    "<img src='"+LOGO+"' alt='ARBA Travel'></div>"+
+    "<p class='dt'><b>Date:</b> "+elong(today)+"</p>"+
+    "<h2>PACKAGE INFORMATION</h2><table class='info'>"+
+    (nm2?"<tr><th>Customer</th><td>"+esc2(nm2)+"</td></tr>":"")+
+    "<tr><th>Package / Destination</th><td>"+esc2(pkg)+"</td></tr>"+
+    "<tr><th>Package Type</th><td>"+(v.pkgType||"Private Tour (Ground Arrangement Only)")+"</td></tr>"+
+    "<tr><th>Total Days &amp; Nights</th><td>"+state.days+" Days "+state.nights+" Nights</td></tr>"+
+    "<tr><th>Proposed Travel Date</th><td>"+travel+"</td></tr>"+
+    (state.tierReq?"<tr><th>Package Rate</th><td>Price on request &ndash; not published for this group size; confirm with operator</td></tr>":"")+
+    "<tr><th>Season</th><td>"+(s.peakNights
+      ?(((s.window&&s.window[4])||"Peak Season")+" - "+s.peakNights+" of "+state.nights+
+        " nights"+(state.seasonReq?" (price upon request - confirm with operator)":""))
+      :"Normal Season")+"</td></tr>"+
+    "</table>"+
+    "<table class='items'><thead><tr><th>ITEM</th><th>NO. OF PAX</th>"+
+    "<th>PRICE PER PAX ("+CUR+")</th><th>TOTAL ("+CUR+")</th></tr></thead><tbody>"+rows+
+    "<tr class='gt'><td colspan='3'>GRAND TOTAL ("+CUR+")</td><td>"+rm(state.grand).replace(CUR+" ","")+"</td></tr>"+
+    (state.pay?("<tr class='dep'><td colspan='3'>FINAL PRICE PER PAX ("+CUR+
+      ") &mdash; all inclusive, "+state.pay+" paying pax</td><td>"+
+      rm(state.finalPerPax).replace(CUR+" ","")+"</td></tr>"):"")+
+    (DEPO()?"<tr class='dep'><td colspan='3'>Deposit upon booking ("+CUR+" "+DEPO()+" per pax)</td><td>"+
+      rm(DEPO()*state.pay).replace(CUR+" ","")+"</td></tr>":"")+
+    "</tbody></table>"+
+    (((state.sur||[]).length)
+      ?("<p class='incl'><b>Price per pax already includes:</b> "+
+        state.sur.map(function(x){return esc2(x.en);}).join(" &middot; ")+"</p>")
+      :"")+
+    "<div class='sechr'></div>"+
+    "<h2>PROPOSED ITINERARY</h2>"+
+    "<table class='itin'><thead><tr><th style='width:11%'>Day</th><th style='width:40%'>Details</th>"+
+    "<th style='width:14%'>Transport</th><th style='width:16%'>Meals</th><th style='width:19%'>Accommodation</th>"+
+    "</tr></thead><tbody>"+itin+"</tbody></table>"+
+    "<h2>PACKAGE INCLUSIONS &amp; EXCLUSIONS</h2>"+
+    "<div class='cols'><div><h3>INCLUSIONS</h3><ul>"+li(inc)+"</ul></div>"+
+    "<div><h3>EXCLUSIONS</h3><ul>"+li(exc)+"</ul></div></div>"+
+    "<p class='val'>"+(CFG.validity||"")+"</p>";
+  }
+
+  function openQuotation(){
+    if(!state.lines||!state.lines.length){alert("Isi bilangan pax dahulu sebelum jana quotation.");return;}
+    var nm=$c("c_name").value.trim();
+    var title="ARBA Quotation - "+(V().name||CFG.dest)+(nm?" - "+nm:"");
+    var doc="<!doctype html><html lang='en'><head><meta charset='utf-8'>"+
+      "<meta name='viewport' content='width=device-width,initial-scale=1'>"+
+      "<title>"+esc2(title)+"</title><style>"+QCSS+"</style></head><body>"+
+      "<div class='bar'><span class='msg'>Quotation siap. Tekan <b>Muat turun PDF</b>, "+
+      "kemudian pilih <b>Save as PDF</b> dalam dialog cetak.</span>"+
+      "<button type='button' onclick='window.print()'>Muat turun PDF</button>"+
+      "<button type='button' class='alt' onclick='window.close()'>Tutup</button></div>"+
+      "<div class='page'>"+quotationBody()+"</div></body></html>";
+    var w=window.open("","_blank");
+    if(!w){alert("Popup disekat oleh browser. Benarkan popup untuk laman ini, kemudian cuba lagi.");return;}
+    w.document.open();w.document.write(doc);w.document.close();
+    try{w.focus();}catch(e){}
+  }
+  $c("c_pdf").addEventListener("click",openQuotation);
+  $c("c_reset").addEventListener("click",function(){
+    blk.querySelectorAll(".calcblk input").forEach(function(el){
+      if(el.closest("#c_days"))return;
+      el.value=el.type==="number"?"0":"";
+    });
+    $c("c_adult").value=String(CFG.defaultAdult||2);
+    $c("p_itin").open=false;
+    loadDefault();render();
+  });
+
+  loadDefault();render();
+  window.__CALC={state:state,days:function(){return days;},variant:function(){return V();}};
+})();
+};
+
+/* ---- muat config dari fail JSON berasingan (boleh diedit terus di GitHub) ----
+   Halaman ini membaca calc-config.json daripada repo yang sama pada setiap muat, jadi
+   mengubah harga, kadar atau blok itinerary hanya perlu commit pada fail JSON itu —
+   tidak perlu bina semula halaman. Kalau fail itu hilang atau JSON-nya rosak,
+   config terbenam di bawah digunakan DAN satu notis merah dipaparkan, supaya
+   suntingan yang gagal tidak berlalu senyap dan quote tidak terpakai data salah. */
+(function(){
+  var URL="calc-config.json", FALLBACK=CALC_CFG;
+  function notis(msg){
+    var b=document.querySelector('.block[data-topic="calc"]');
+    if(!b)return;
+    var p=document.createElement("p");
+    p.className="calcwarn";
+    p.innerHTML="<b>Notis:</b> "+msg+" Kalkulator sedang guna config terbenam "+
+      "(versi terakhir yang dibina), jadi angka mungkin bukan yang terbaru.";
+    var h=b.querySelector("h2");
+    if(h&&h.nextSibling)b.insertBefore(p,h.nextSibling);else b.appendChild(p);
+  }
+  function semak(c){
+    if(!c||typeof c!=="object"||c.constructor!==Object)return "bukan objek JSON";
+    if(!c.variants||!c.variants.length)return "tiada senarai variants";
+    for(var i=0;i<c.variants.length;i++){
+      var v=c.variants[i],nm=v.name||("#"+(i+1));
+      if(!v.tiers||!v.tiers.length)return "varian "+nm+" tiada tiers";
+      if(!v.itin||!v.itin.length)return "varian "+nm+" tiada itin";
+      if(v.itin.length!==v.days)
+        return "varian "+nm+": "+v.itin.length+" hari dalam itin tetapi days="+v.days;
+      for(var j=0;j<v.tiers.length;j++){
+        var t=v.tiers[j];
+        if(t.from==null||t.to==null||t.a==null||t.c==null||t.n==null)
+          return "varian "+nm+" ada tier tidak lengkap (perlu from,to,a,c,n)";
+      }
+    }
+    return "";
+  }
+  function boot(){try{window.ARBA_CALC_BOOT();}catch(e){}}
+  if(!window.fetch){boot();return;}
+  fetch(URL+"?t="+new Date().getTime(),{cache:"no-store"})
+    .then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.text();})
+    .then(function(txt){
+      var c;
+      try{c=JSON.parse(txt);}catch(e){throw new Error("JSON tidak sah - "+e.message);}
+      var bad=semak(c);
+      if(bad)throw new Error(bad);
+      CALC_CFG=c;
+    })
+    .catch(function(e){CALC_CFG=FALLBACK;notis("gagal guna "+URL+" ("+e.message+").");})
+    .then(boot,boot);
+})();
+/* ---- Simple Calculator: tamat ---- */
+
 </script>
 
 <script>
